@@ -12,7 +12,7 @@ const userRouter = express.Router();
 // Register
 
 const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
+    service: "gmail",
     port: 535,
   secure: true,
     auth: {
