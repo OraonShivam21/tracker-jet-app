@@ -6,13 +6,14 @@ require("dotenv").config();
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const express = require("express");
+const { use } = require("bcrypt/promises");
 // const {BlacklistModel} = require("../models/blacklist.models");
 // const { use } = require("bcrypt/promises");
 const userRouter = express.Router();
 // Register
 
 const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
+    service: "gmail",
     port: 535,
   secure: true,
     auth: {
@@ -39,7 +40,7 @@ userRouter.post("/register", async (req, res) => {
       const salt = 3;
       bcrypt.hash(password, salt)
         .then((hashPass) => {
-          const newUser = new UserModel({ name, email, password: hashPass });
+          const newUser = new UserModel({ name, email, password: hashPass,verified:false });
           newUser.save()
             .then((result) => {
               sendOtpVerificatiionEmail(result,res);
@@ -91,7 +92,74 @@ const sendOtpVerificatiionEmail = async({_id,email},res)=>{
     }
 }
 
+// Verify email
+// userRouter.get("/verify/:userId/:otp",(req,res)=>{
+//     let { userId, otp} = req.params;
+//     const hashedOTP =  bcrypt.hash(otp,10)
+//     let optPresent = OtpVerificationModel.find({userId})
+//     .then((result)=>{
+//         if(optPresent){
+//             bcrypt.compare(hashedOTP,otp)
+//             .then(result=>{
+//                 if(result){
+//                    UserModel.updateOne({_id:userId}, {verified:true})
+//                    .then(()=>{
+//                     OtpVerificationModel.deleteOne({userId})
+//                     .then(()=>{
+//                         res.json({msg:"Verification successfull"})
+//                     }).catch(err=>{res.json(err)})
+//                    })
+//                    .catch(err=>{res.json({err})})
+//                 }else{
+//                     res.json({msg:"Incorrect OTP"})
+//                 }
+//             })
+//             .catch(error=>{
+//                 res.json(error)
+//             })
+//         }
+//     }
+//     )
+//     .catch((error)=>{
+//         console.log(error);
+//     })
+// })
 
+userRouter.post("/verifyOTP",async(req,res)=>{
+    try{
+       let {userId, otp} = req.body;
+       if(!userId || !otp){
+        throw Error("Empty otp details are not allowed");
+       }else{
+        const userOtpVerificationRecords = await OtpVerificationModel.find({userId});
+        if(userOtpVerificationRecords.length <= 0){
+            throw new Error("Record doesn't exist !, Please signup again")
+        }else{
+            const {expiresAt} = userOtpVerificationRecords[0];
+            const hashedOtp = userOtpVerificationRecords[0].otp;
+            if(expiresAt < Date.now()){
+                await OtpVerificationModel.deleteMany({userId})
+                throw new Error("Code has expired, please request again")
+            }else{
+               const validOtp = await bcrypt.compare(otp, hashedOtp)
+               if(!validOtp){
+                throw new Error("Invalid code passed")
+               }else{
+                UserModel.updateOne({_id:userId},{verified:true})
+                OtpVerificationModel.deleteMany({userId})
+                res.json({
+                    status:"VERIFIED",
+                    message:'User email verified successfully'
+                })
+               }
+            }
+        }
+       }
+    }
+    catch(err){
+        res.json({err});
+    }
+})
 
 
 
