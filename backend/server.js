@@ -2,11 +2,13 @@ const express = require("express");
 const connection = require("./connection");
 const taskRoute = require("./routes/task.route");
 require("dotenv").config();
+const {userRouter} = require("./routes/user.route")
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(express.json());
+app.use("/user",userRouter);
 
 app.use("/tasks", taskRoute);
 
