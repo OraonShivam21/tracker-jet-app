@@ -13,17 +13,18 @@ const taskSchema = new mongoose.Schema(
     subtasks: {
       type: [String],
     },
-    createdAt: {
-      type: Date,
+    userID: {
+      type: String,
       required: true,
     },
-    userID: {
+    username: {
       type: String,
       required: true,
     },
   },
   {
     versionKey: false,
+    timestamps: true,
   }
 );
 
