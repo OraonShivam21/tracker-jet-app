@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="navbar.css">
+</head>
+
+<body>
+    <nav>
+        <div class="navbar">
+            <a href="#" class="navbar-brand">Your Logo</a>
+
+            <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+            <ul class="navbar-menu">
+                <li class="navbar-item"><a href="#" class="navbar-link">Home</a></li>
+                <li class="navbar-item"><a href="#" class="navbar-link">About</a></li>
+                <li class="navbar-item"><a href="#" class="navbar-link">Services</a></li>
+                <li class="navbar-item"><a href="#" class="navbar-link">Contact</a></li>
+                <li class="navbar-item"><a href="#" class="navbar-link sign-in">Sign In</a></li>
+            </ul>
+        </div>
+    </nav>
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector('.navbar-menu');
+            menu.style.display = (menu.style.display === 'flex') ? 'none' : 'flex';
+        }
+    </script>
+</body>
+</html>
