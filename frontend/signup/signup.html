@@ -20,7 +20,7 @@
   
     <div class="rcontainer" id="rmain">
         <div class="sign-up">
-            <form class="rform" action="#">
+            <form class="rform" action="#" id="signupForm">
                 <h1 class="rh1">Create Account</h1>
                 <div class="social-container">
                     <a href="#" class="ra social"><i class="fab fa-facebook-f"></i></a>
@@ -33,8 +33,15 @@
         
                 <input class="rinput" id="remail" type="email" name="email" placeholder="Email" required="">
                 <input class="rinput" id="rpswd" type="password" name="pswd" placeholder="Password" required="">
-                <button class="rbutton" id="rsbtn">Sign Up</button>
+                <button type="submit" class="rbutton" id="rsbtn" onclick="registerUser()">Sign Up</button>
             </form>
+            <!-- otp -->
+            <form class="rform" id="otpVerificationForm" action="#"  style="display: none;" >
+              <h2 class="otphead rh1">OTP Verification</h2>
+              <input class="otp" id="otp" type="password" name="otp" placeholder="Enter OTP" required="">
+              <button class="rbutton btnotp" id="verifyOtpBtn" onclick="verifyUser()">Verify OTP</button>
+          </form>
+          <!-- otp -->
         </div>
         <div class="sign-in">
             
@@ -49,7 +56,7 @@
                 <input id = "email" class="rinput" type="email" name="email" placeholder="Email" required="">
                 <input class="rinput" id = "password" type="password" name="pswd" placeholder="Password" required="">
                 <a class="ra" href="#">Forget your Password?</a>
-                <button class="rbutton1">Sign In</button>
+                <button class="rbutton1" id="loginBtn">Sign In</button>
             </form>
         </div>
         <div class="overlay-container">

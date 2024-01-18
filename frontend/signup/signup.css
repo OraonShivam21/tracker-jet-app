@@ -91,6 +91,15 @@
   letter-spacing: 0.5px;
   margin: 5px 0 5px;
 }
+.otp{
+  margin-top: 20%;
+}
+.btnotp{
+  margin-top: 10%;
+}
+.otphead{
+  margin-top: 50%;
+}
 .rinput{
   background-color: #eee;
   padding: 10px 15px;

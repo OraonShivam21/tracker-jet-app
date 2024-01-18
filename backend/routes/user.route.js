@@ -7,6 +7,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const express = require("express");
 const { use } = require("bcrypt/promises");
+
 // const {BlacklistModel} = require("../models/blacklist.models");
 // const { use } = require("bcrypt/promises");
 const userRouter = express.Router();
@@ -128,7 +129,7 @@ const sendOtpVerificatiionEmail = async({_id,email},res)=>{
 userRouter.post("/verifyOTP",async(req,res)=>{
     try{
        let {userId, otp} = req.body;
-       if(!userId || !otp){
+       if(!otp){
         throw Error("Empty otp details are not allowed");
        }else{
         const userOtpVerificationRecords = await OtpVerificationModel.find({userId});
