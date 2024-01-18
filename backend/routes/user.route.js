@@ -133,17 +133,17 @@ userRouter.post("/verifyOTP",async(req,res)=>{
        }else{
         const userOtpVerificationRecords = await OtpVerificationModel.find({userId});
         if(userOtpVerificationRecords.length <= 0){
-            throw new Error("Record doesn't exist !, Please signup again")
+            throw "Record doesn't exist !, Please signup again"
         }else{
             const {expiresAt} = userOtpVerificationRecords[0];
             const hashedOtp = userOtpVerificationRecords[0].otp;
             if(expiresAt < Date.now()){
                 await OtpVerificationModel.deleteMany({userId})
-                throw new Error("Code has expired, please request again")
+                throw "Code has expired, please request again"
             }else{
                const validOtp = await bcrypt.compare(otp, hashedOtp)
                if(!validOtp){
-                throw new Error("Invalid code passed")
+                throw "Invalid code passed"
                }else{
                 UserModel.updateOne({_id:userId},{verified:true})
                 OtpVerificationModel.deleteMany({userId})
