@@ -179,12 +179,22 @@ form.sign-in-form {
   top: -10%;
   right: 48%;
   transform: translateY(-50%);
-  background:#0E8388;
+  background: #1F568E;
   transition: 1.8s ease-in-out;
   border-radius: 50%;
   z-index: 6;
 }
-
+/* Add styles for the blur effect */
+/* .blur {
+  filter: blur(5px);
+  pointer-events: none;
+} */
+/* #otpVerification{
+  display: none;
+} */
+.otp-verification{
+  display: none;
+}
 .image {
   
   width: 70%;
