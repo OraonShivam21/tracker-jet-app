@@ -8,7 +8,6 @@ const bcrypt = require("bcrypt");
 const express = require("express");
 const { use } = require("bcrypt/promises");
 
-// const {BlacklistModel} = require("../models/blacklist.models");
 // const { use } = require("bcrypt/promises");
 const userRouter = express.Router();
 // Register

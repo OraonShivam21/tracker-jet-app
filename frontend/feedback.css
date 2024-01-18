@@ -1,0 +1,93 @@
+/* General styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .background-image {
+    background-image: url('https://st4.depositphotos.com/18071024/20132/i/450/depositphotos_201322754-stock-photo-set-metal-hexagons-dark-plane.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Overlay color */
+  }
+  
+  .container {
+    z-index: 1;
+    position: relative;
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+    color: #fff;
+  }
+  
+  /* Styles specific to the rating section */
+  .rating h2 {
+    margin-bottom: 20px;
+    font-size: 32px;
+  }
+  
+  .stars {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  
+  
+  .stars label {
+    font-size: 40px;
+    cursor: pointer;
+    color: #ccc;
+    transition: color 0.3s ease;
+    display: block;
+    margin-bottom: 8px;
+  }
+  
+  .stars label:hover,
+  .stars label:hover ~ label,
+  .stars input:checked ~ label {
+    color: #FFD700; /* Yellow color for selected stars */
+  }
+  
+  .feedback textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    resize: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 20px;
+  }
+  
+  .submit-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block;
+    margin: 0 auto 20px;
+  }
+  
+  .submit-btn:hover {
+    background-color: #1d7a7e;
+  }
+  
