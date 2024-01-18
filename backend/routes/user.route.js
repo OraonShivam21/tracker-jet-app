@@ -7,6 +7,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const express = require("express");
 const { use } = require("bcrypt/promises");
+const {BlacklistModel} = require("../models/blacklist.model")
 
 // const { use } = require("bcrypt/promises");
 const userRouter = express.Router();
@@ -143,7 +144,11 @@ userRouter.post("/verifyOTP",async(req,res)=>{
             }else{
                const validOtp = await bcrypt.compare(otp, hashedOtp)
                if(!validOtp){
-                throw "Invalid code passed"
+                res.json({
+                    status:"Not verified",
+                    message:"Wrong otp"
+                })
+                
                }else{
                 UserModel.updateOne({_id:userId},{verified:true})
                 OtpVerificationModel.deleteMany({userId})
@@ -172,9 +177,9 @@ userRouter.post("/login",async(req,res)=>{
        if(user){
         bcrypt.compare(password,user.password,(err, result)=>{
             if(result){
-                const access_token = jwt.sign({userID: user._id, user:user.name},process.env.accessSecret);
+                const token = jwt.sign({userId: user._id, user:user.name},process.env.accessSecret);
                 // const refresh_token = jwt.sign({userID: user._id, user:user.name},"Prity");
-                res.json({msg:"Login Successful", user,access_token});
+                res.json({msg:"Login Successful", user,token});
                 
             }else{
                 res.json({msg:"Wrong email and password"})
