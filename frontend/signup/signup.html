@@ -1,126 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script
-      src="https://kit.fontawesome.com/64d58efce2.js"
-      crossorigin="anonymous"
-    ></script>
-    <link rel="stylesheet" href="signup.css" />
-    <title>Sign in & Sign up Form</title>
-  </head>
-  <body>
-    <!-- OTP VERI -->
-    <div class="otp-verification" id="otpVerification" >
-      <form action="#" class="otp-form">
-        <h2 class="title">OTP Verification</h2>
-        <div class="input-field">
-          <i class="fas fa-key"></i>
-          <input type="text" placeholder="Enter OTP" id="otpInput" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User log in / sign up</title>
+    <link rel="shortcut icon" href="rLogo.png" type="image/x-icon">
+    <link rel="stylesheet" href="./signup.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles/rstyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../navbar/navbar.css">
+</head>
+<body class="rbody" style="margin-top: 10%;">
+  
+    <div class="rcontainer" id="rmain">
+        <div class="sign-up">
+            <form class="rform" action="#">
+                <h1 class="rh1">Create Account</h1>
+                <div class="social-container">
+                    <a href="#" class="ra social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="ra social"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" class="ra social"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <p class="rp">or use your email for registration</p>
+                <!-- <div class="rname"> -->
+                    <input class="rinput" id="fname" type="text" name="txt" placeholder="Username" required="">
+        
+                <input class="rinput" id="remail" type="email" name="email" placeholder="Email" required="">
+                <input class="rinput" id="rpswd" type="password" name="pswd" placeholder="Password" required="">
+                <button class="rbutton" id="rsbtn">Sign Up</button>
+            </form>
         </div>
-        <button class="btn" id="verifyOtpBtn">Verify OTP</button>
-      </form>
-    </div>
-    <div class="container">
-      <div class="forms-container">
-        <div class="signin-signup">
-          <form action="#" class="sign-in-form">
-            <h2 class="title">Sign in</h2>
-            <div class="input-field">
-              <i class="fas fa-user"></i>
-              <input type="text" placeholder="Username" />
+        <div class="sign-in">
+            
+            <form class="rform" action="#">
+                <h1 class="rh1">User Login</h1>
+                <div class="social-container">
+                    <a href="#" class="ra social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="ra social"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" class="ra social"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <p class="rp">or use your account</p>
+                <input id = "email" class="rinput" type="email" name="email" placeholder="Email" required="">
+                <input class="rinput" id = "password" type="password" name="pswd" placeholder="Password" required="">
+                <a class="ra" href="#">Forget your Password?</a>
+                <button class="rbutton1">Sign In</button>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-left">
+                    <h1 class="rh1">Welcome Back!</h1>
+                    <p class="rp">To keep connected with us please login with your personal data</p>
+                    <button class="rbutton" id="signIn">Sign In</button>
+                </div>
+                <div class="overlay-right">
+                    <h1 class="rh1">Hello, Learner</h1>
+                    <p class="rp">Enter your personal details and start learning</p>
+                    <button class="rbutton" id="signUp">Sign Up</button>
+                </div>
             </div>
-            <div class="input-field">
-              <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
-            </div>
-            <input type="submit" value="Login" class="btn solid" />
-            <p class="social-text">Or Sign in with social platforms</p>
-            <div class="social-media">
-              <a href="#" class="social-icon">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-twitter"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-google"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-linkedin-in"></i>
-              </a>
-            </div>
-          </form>
-          <form action="#" class="sign-up-form">
-            <h2 class="title">Sign up</h2>
-            <div class="input-field">
-              <i class="fas fa-user"></i>
-              <input type="text" placeholder="Username" id="usernamep"/>
-            </div>
-            <div class="input-field">
-              <i class="fas fa-envelope"></i>
-              <input type="email" placeholder="Email" />
-            </div>
-            <div class="input-field">
-              <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
-            </div>
-            <!-- <input type="submit" class="btn" id="signUpBtn",value="Sign up"/> -->
-            <!-- <button class="btn" id="signUpBtn",value="Sign up">Submit</button> -->
-            <button id="signUPBTN">Submit</button>
-            <p class="social-text">Or Sign up with social platforms</p>
-            <div class="social-media">
-              <a href="#" class="social-icon">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-twitter"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-google"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-linkedin-in"></i>
-              </a>
-            </div>
-          </form>
         </div>
       </div>
+    <script type="text/javascript">
+    const signUpButton = document.getElementById('signUp');
+    const signInButton = document.getElementById('signIn');
+    const main = document.getElementById('rmain');
 
-      <div class="panels-container">
-        <div class="panel left-panel">
-          <div class="content">
-            <h3>New here ?</h3>
-            <p>
-               Don't have an account yet ? Sign up and get access to all our services.
-            </p>
-            <button class="btn transparent" id="sign-up-btn">
-              Sign up
-            </button>
-          </div>
-          <img src="img/log.svg" class="image" alt="" />
-        </div>
-        <div class="panel right-panel">
-          <div class="content">
-            <h3>One of us ?</h3>
-            <p>
-              Already made an account here? Sign in and get access to all our services.
-            </p>
-            <button class="btn transparent" id="sign-in-btn">
-              Sign in
-            </button>
-          </div>
-          <img src="img/register.svg" class="image" alt="" />
-        </div>
-      </div>
-    </div>
-
-
-    
-    
-    <!-- OTP -->
-    <!-- <script src="../routes/user.routes.js"></script> -->
+    signUpButton.addEventListener('click',()=>{
+        main.classList.add("right-panel-active");
+    });
+    signInButton.addEventListener('click',()=>{
+        main.classList.remove("right-panel-active");
+    });
+    </script>
     <script src="./signup.js"></script>
-  </body>
+</body>
 </html>

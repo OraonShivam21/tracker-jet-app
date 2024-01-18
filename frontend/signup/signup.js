@@ -1,58 +1,99 @@
-const sign_in_btn = document.querySelector("#sign-in-btn");
-const sign_up_btn = document.querySelector("#sign-up-btn");
-const container = document.querySelector(".container");
+const userUrl = "https://neural-innovator-5123.onrender.com/users";
+const signBtn = document.getElementById('rsbtn');
+const firstNameInput = document.getElementById('fname');
+const lastNameInput = document.getElementById('lname');
+const emailInput = document.getElementById('remail');
+const phoneInput = document.getElementById('rphone');
+const dateOfBirthInput = document.getElementById('rdob');
+const passwordInput = document.getElementById('rpswd');
 
-sign_up_btn.addEventListener("click", () => {
-  container.classList.add("sign-up-mode");
+signBtn.addEventListener('click', () => {
+    const userObj = {
+        firstName: firstNameInput.value,
+        lastName: lastNameInput.value,
+        email: emailInput.value,
+        phone: parseInt(phoneInput.value),
+        dateOfBirth: dateOfBirthInput.value,
+        password: passwordInput.value
+    };
+
+    if (validatePassword(userObj.password)) {
+        registerUser(userObj);
+    } else {
+        alert('Password must contain at least 6 characters');
+    }
 });
 
-sign_in_btn.addEventListener("click", () => {
-  container.classList.remove("sign-up-mode");
+async function registerUser(userObj) {
+    console.log('User Object:', userObj);
+
+    try {
+        const res = await fetch(userUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(userObj),
+        });
+
+        if (!res.ok) {
+            throw new Error(`Registration failed. Status: ${res.status}`);
+        }
+
+        const data = await res.json();
+        console.log(data);
+        successfullyRegistered();
+
+    } catch (error) {
+        console.error('Error during registration:', error);
+        if (error.response) {
+            console.error('Response text:', await error.response.text());
+        }
+        alert('Registration failed. Please check the console for details.');
+    }
+}
+
+function successfullyRegistered() {
+    alert("Registration successful! Please log in to continue.");
+}
+
+function validatePassword(password) {
+    return password.length >= 6;
+}
+
+
+
+async function fetchData(url) {
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        console.log(data);
+
+        return data;
+
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+}
+fetchData(userUrl);
+async function validateLogin() {
+    const emailInput = document.getElementById("email").value;
+    const passwordInput = document.getElementById("password").value;
+    
+    const userData = await fetchData(userUrl);
+    
+console.log(passwordInput);
+
+    console.log('Email Input:', emailInput);
+    console.log('Password Input:', passwordInput);
+
+    const user = userData.find(user => user.email === emailInput && user.password === passwordInput);
+
+    if (user) {
+        window.location.href = "index.html";
+    } else {
+        alert("Incorrect email or password. Please try again.");
+    }
+}
+document.addEventListener('DOMContentLoaded', function () {
+    const sign = document.querySelector('.rbutton1');
+    sign.addEventListener('click', validateLogin);
 });
-
-
-$("#search-icon").click(function() {
-  $(".nav").toggleClass("search");
-  $(".nav").toggleClass("no-search");
-  $(".search-input").toggleClass("search-active");
-});
-
-$('.menu-toggle').click(function(){
-   $(".nav").toggleClass("mobile-nav");
-   $(this).toggleClass("is-active");
-});
-const signUpBtn = document.getElementById('signUPBTN');
-signUpBtn.addEventListener('click', function (event) {
-  event.preventDefault(); // Prevent form submission
-   location.replace("../navbar/navbar.html")
-  // container.classList.add('blur');
-  // otpVerification.style.display = 'block';
-});
-// document.addEventListener('DOMContentLoaded', function () {
- 
-//   const otpVerification = document.getElementById('otpVerification');
-//   const verifyOtpBtn = document.getElementById('verifyOtpBtn');
-
-  
-
-//   verifyOtpBtn.addEventListener('click', function () {
-//     // Perform OTP verification logic here
-//     // If verification is successful, show login form
-//     alert('OTP verified. Login form will appear.');
-
-//     // Optional: Reset the form and remove the blur
-//     otpVerification.style.display = 'none';
-//     container.classList.remove('blur');
-//   });
-// });
-
-  // sign_in_btn.addEventListener('click', function () {
-  //   container.classList.remove('blur');
-  //   otpVerification.style.display = 'none';
-  // });
-
-
-
-
-// Login / Signup functionality
-
