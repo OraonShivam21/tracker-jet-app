@@ -7,7 +7,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const express = require("express");
 const { use } = require("bcrypt/promises");
-// const {BlacklistModel} = require("../models/blacklist.models");
+// const {BlacklistModel} = require("../models/blacklist.model");
 // const { use } = require("bcrypt/promises");
 const userRouter = express.Router();
 // Register
