@@ -11,6 +11,17 @@
     <title>Sign in & Sign up Form</title>
   </head>
   <body>
+    <!-- OTP VERI -->
+    <div class="otp-verification" id="otpVerification" >
+      <form action="#" class="otp-form">
+        <h2 class="title">OTP Verification</h2>
+        <div class="input-field">
+          <i class="fas fa-key"></i>
+          <input type="text" placeholder="Enter OTP" id="otpInput" />
+        </div>
+        <button class="btn" id="verifyOtpBtn">Verify OTP</button>
+      </form>
+    </div>
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
@@ -55,7 +66,9 @@
               <i class="fas fa-lock"></i>
               <input type="password" placeholder="Password" />
             </div>
-            <input type="submit" class="btn" value="Sign up" />
+            <!-- <input type="submit" class="btn" id="signUpBtn",value="Sign up"/> -->
+            <!-- <button class="btn" id="signUpBtn",value="Sign up">Submit</button> -->
+            <button id="signUPBTN">Submit</button>
             <p class="social-text">Or Sign up with social platforms</p>
             <div class="social-media">
               <a href="#" class="social-icon">
@@ -102,7 +115,12 @@
         </div>
       </div>
     </div>
-    <script src="../routes/user.routes.js"></script>
-    <script src="signup.js"></script>
+
+
+    
+    
+    <!-- OTP -->
+    <!-- <script src="../routes/user.routes.js"></script> -->
+    <script src="./signup.js"></script>
   </body>
 </html>
