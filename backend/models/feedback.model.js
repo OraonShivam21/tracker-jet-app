@@ -14,6 +14,10 @@ const feedbackSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    user: {
+      type: String,
+      required: true,
+    },
   },
   {
     versionKey: false,
