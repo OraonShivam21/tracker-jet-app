@@ -11,7 +11,7 @@
         }
 
         .sidebar {
-            width: 300px;
+            width: 220px;
             background-color: #121212;
              height: 100vh; 
             padding: 20px; 
@@ -39,12 +39,15 @@
         .go-premium-btn {
             display: block;
             text-decoration: none;
-            background-color: #0078D7;
-            color: white;
-            padding: 10px 20px;
+            /* background-color: #0078D7; */
+            border: 1px solid #0078D7;
+            color:rgb(0,129,248);
+            font-size:14px;
+            padding: 12px 40px;
             border-radius: 20px;
             margin: 10px auto;
-            width: fit-content;
+            width: 120px;
+            font-weight:700;
             transition: background-color 0.3s;
         }
 
@@ -56,7 +59,9 @@
             display: flex;
             align-items: center;
             margin-bottom: 10px;
-            font-size: 16px;
+            font-size: 20px;
+            padding: 8px;
+            
         }
         .menu-item:hover{
             cursor: pointer;
@@ -74,23 +79,46 @@
             flex-grow: 1;
             color: rgb(162, 162, 162);
             font-family: sans-serif;
-            font-size: 15px;
+            font-size: 17px;
 
         }
 
         .menu-item .badge {
+            
             margin-left: auto;
             background-color:rgb(0,131,255);
+            /* border: 1px solid red; */
             border-radius: 10px;
             color: white;
             padding: 2px 8px;
             font-size: 12px;
         }
+        
+        
+        .menu-item .addList{
+            
+            /* You can adjust the value as needed */
+            margin-left: auto;
+            /* background-color:rgb(0,131,255); */
+            /* border: 1px solid red; */
+            border-radius: 10px;
+            color: white;
+            padding-top: 14px;
+              /* margin-left: 100px; */
+            font-size: 30px;
+        }
 
-        .section-title {
-            margin: 25px 0 10px;
+        #section-title {
+            margin: 35px 0 10px;
             font-size: 18px;
             color: white ;
+            padding-left: 4px;
+            flex-grow: 1;
+            /* color: rgb(162, 162, 162); */
+            font-family: sans-serif;
+          
+            font-weight:700;
+            /* line-height: 400px; */
         } 
 
         .add-space-btn {
