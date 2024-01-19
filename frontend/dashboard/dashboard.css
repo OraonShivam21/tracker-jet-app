@@ -1,0 +1,176 @@
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* background-color: #121212; */
+    color: #ffffff;
+    /* margin: 0px; */
+    /* padding: 0;  */
+    /* border: 1px solid red; */
+    background-image: url("../assets/blank-blue-halftone-background_53876-114466.avif");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    /* background-color: #1f3a39; */
+    
+}
+.userProfil{
+    padding-top: 30%;
+}
+.headingP{
+    color: #ffffff;
+    font-size: 19px;
+    margin-top: 15px;
+    margin-left: 20%;
+    text-decoration: underline;
+}
+.sidebar {
+    width: 250px;
+    background-color: #181818;
+     height: 100vh; 
+    padding: 20px; 
+   /* margin-top: 8%; */
+    /* border: 1px solid red; */
+    /* height: 84vh; */
+    overflow-y: scroll;
+}
+
+ #profile {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.profile-name {
+    font-size: 25px;
+    font-weight: 600;
+    /* margin-bottom: 5%; */
+    margin-left: 20%;
+    color: rgb(222, 220, 210);
+}
+.fa-solid{
+    color: #e6dfdf;
+    /* height: 100px;
+    width: 50px; */
+    font-size: 23px;
+    margin-left: 10px;
+    /* padding-top: 10%; */
+}
+.username{
+    margin-left: px;
+}
+.priority{
+    color: gold;
+    font-size: 19px;
+    margin-left: 3%;
+}
+.profile-plan {
+    font-size: 14px;
+    color: #e6dfdf;
+    margin-bottom: 15px;
+} 
+
+.go-premium-btn {
+    display: block;
+    text-decoration: none;
+    /* background-color: #0078D7; */
+    border: 1px solid #0078D7;
+    color:rgb(0,129,248);
+    font-size:12px;
+    padding: 12px 20px;
+    border-radius: 20px;
+    margin: 10px auto;
+    width: 120px;
+    font-weight:700;
+    transition: background-color 0.3s;
+}
+
+.go-premium-btn:hover {
+    background-color: #005ba1;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 20px;
+    padding: 8px;
+    
+}
+.menu-item:hover{
+    cursor: pointer;
+}
+
+.menu-item i {
+    width: 30px;
+    text-align: center;
+    margin-right: 10px;
+    color: rgb(162, 162, 162);
+
+}
+
+.menu-text {
+    flex-grow: 1;
+    color: rgb(162, 162, 162);
+    font-family: sans-serif;
+    font-size: 17px;
+
+}
+
+.menu-item .badge {
+    
+    margin-left: auto;
+    background-color:rgb(0,131,255);
+    /* border: 1px solid red; */
+    border-radius: 10px;
+    color: white;
+    padding: 2px 8px;
+    font-size: 12px;
+}
+
+
+.menu-item .addList{
+    
+    /* You can adjust the value as needed */
+    margin-left: auto;
+    /* background-color:rgb(0,131,255); */
+    /* border: 1px solid red; */
+    border-radius: 10px;
+    color: white;
+    padding-top: 14px;
+      /* margin-left: 100px; */
+    font-size: 30px;
+}
+/* .logoutBtn{
+    color: white;
+    background-color: blue;
+    padding: 10px 40px;
+    border-radius: 5%;
+} */
+.section-title {
+    margin: 35px 0 10px;
+    font-size: 18px;
+    color: white ;
+    padding-left: 4px;
+    flex-grow: 1;
+    /* color: rgb(162, 162, 162); */
+    font-family: sans-serif;
+  
+    font-weight:700;
+    /* line-height: 400px; */
+} 
+
+.add-space-btn {
+    display: block;
+    text-decoration: none;
+    background-color: #0078D7;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    margin: 20px auto;
+    width: fit-content;
+    transition: background-color 0.3s;
+}
+
+.add-space-btn:hover {
+    background-color: #005ba1;
+}
+

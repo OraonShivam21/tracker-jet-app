@@ -91,6 +91,18 @@
   letter-spacing: 0.5px;
   margin: 5px 0 5px;
 }
+.emailv{
+  margin-top: 40px;
+}
+.otp{
+  margin-top: 2%;
+}
+ .btnotp{
+  margin-top: 10%;
+} 
+.otphead{
+  margin-top: 50%;
+}
 .rinput{
   background-color: #eee;
   padding: 10px 15px;
