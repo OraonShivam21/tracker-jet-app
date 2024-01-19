@@ -38,6 +38,7 @@
             <!-- otp -->
             <form class="rform" id="otpVerificationForm" action="#"  style="display: none;" >
               <h2 class="otphead rh1">OTP Verification</h2>
+              <input class="emailv" id="emailverify" type="email" name="email" placeholder="Enter Email" required="">
               <input class="otp" id="otp" type="password" name="otp" placeholder="Enter OTP" required="">
               <button class="rbutton btnotp" id="verifyOtpBtn" onclick="verifyUser()">Verify OTP</button>
           </form>
@@ -45,7 +46,7 @@
         </div>
         <div class="sign-in">
             
-            <form class="rform" action="#">
+            <form class="rform" id="loginForm" action="#">
                 <h1 class="rh1">User Login</h1>
                 <div class="social-container">
                     <a href="#" class="ra social"><i class="fab fa-facebook-f"></i></a>
@@ -56,7 +57,7 @@
                 <input id = "email" class="rinput" type="email" name="email" placeholder="Email" required="">
                 <input class="rinput" id = "password" type="password" name="pswd" placeholder="Password" required="">
                 <a class="ra" href="#">Forget your Password?</a>
-                <button class="rbutton1" id="loginBtn">Sign In</button>
+                <button class="rbutton1" id="loginBtn" onclick="loginUser()">Sign In</button>
             </form>
         </div>
         <div class="overlay-container">

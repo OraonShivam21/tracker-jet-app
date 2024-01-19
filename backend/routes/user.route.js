@@ -15,7 +15,7 @@ const userRouter = express.Router();
 
 const transporter = nodemailer.createTransport({
     service: "gmail",
-    port: 535,
+    port: 465,
   secure: true,
     auth: {
       // TODO: replace `user` and `pass` values from <https://forwardemail.net>
@@ -69,14 +69,14 @@ const sendOtpVerificatiionEmail = async({_id,email},res)=>{
     const saltRound = 10;
     const hashedOTP = await bcrypt.hash(otp,saltRound);
     const newOTPVerification = await new OtpVerificationModel({
-        userId:_id,
+        email:email,
         otp:hashedOTP,
         createdAt:Date.now(),
         expiresAt:Date.now()+3600000
     });
-    await newOTPVerification.save();
-    transporter.sendMail(mailOptions);
-    res.json({
+    await Promise.all([newOTPVerification.save(),
+    transporter.sendMail(mailOptions)])
+    res.status(200).json({
         status:"PENDING",
         message:"Verification otp email sent",
         data:{
@@ -86,9 +86,8 @@ const sendOtpVerificatiionEmail = async({_id,email},res)=>{
     })
     }
     catch(err){
-       res.json({
-        status:"FAILED",
-        message:err.message,
+       res.status(400).json({
+        msg:err.message,
        })
     }
 }
@@ -128,39 +127,34 @@ const sendOtpVerificatiionEmail = async({_id,email},res)=>{
 
 userRouter.post("/verifyOTP",async(req,res)=>{
     try{
-       let {userId, otp} = req.body;
+       let {email,otp} = req.body;
        if(!otp){
-        throw Error("Empty otp details are not allowed");
-       }else{
-        const userOtpVerificationRecords = await OtpVerificationModel.find({userId});
-        if(userOtpVerificationRecords.length <= 0){
-            throw "Record doesn't exist !, Please signup again"
-        }else{
+        res.status(400).json({msg:"Empty otp details are not allowed"})
+        // throw Error("Empty otp details are not allowed");
+       }
+        const userOtpVerificationRecords = await OtpVerificationModel.find({email});
+        // if(userOtpVerificationRecords.length <= 0){
+        //     res.json({msg:"Record doesn't exist !, Please signup again"})
+        //     // throw "Record doesn't exist !, Please signup again"
+        // }
             const {expiresAt} = userOtpVerificationRecords[0];
             const hashedOtp = userOtpVerificationRecords[0].otp;
             if(expiresAt < Date.now()){
-                await OtpVerificationModel.deleteMany({userId})
-                throw "Code has expired, please request again"
+                await OtpVerificationModel.deleteMany({email})
+                res.status(400).json({msg:"Code Expired"})
+                // throw "Code has expired, please request again"
             }else{
                const validOtp = await bcrypt.compare(otp, hashedOtp)
                if(!validOtp){
-                res.json({
-                    status:"Not verified",
-                    message:"Wrong otp"
-                })
+                res.status(400).json({msg:"Worng otp"})
                 
                }else{
-                UserModel.updateOne({_id:userId},{verified:true})
-                OtpVerificationModel.deleteMany({userId})
-                res.json({
-                    status:"VERIFIED",
-                    message:'User email verified successfully'
-                })
+                // await UserModel.updateOne({_id:userId},{verified:true})
+               await OtpVerificationModel.deleteMany({email})
+                res.status(200).json({msg:'User email verified successfully'})
                }
             }
         }
-       }
-    }
     catch(err){
         res.json({err});
     }
@@ -179,10 +173,10 @@ userRouter.post("/login",async(req,res)=>{
             if(result){
                 const token = jwt.sign({userId: user._id, user:user.name},process.env.accessSecret);
                 // const refresh_token = jwt.sign({userID: user._id, user:user.name},"Prity");
-                res.json({msg:"Login Successful", user,token});
+                res.status(200).json({msg:"Login Successful", user,token});
                 
             }else{
-                res.json({msg:"Wrong email and password"})
+                res.status(400).json({msg:"Wrong email and password"})
             }
         })
        }

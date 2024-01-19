@@ -6,13 +6,15 @@
 .homepage {
     /* background-color: #ecf5f8;
      */
-     background-image: url(https://img.pikbest.com/backgrounds/20200703/education-and-training-drawing-childlike-black-poster-background-map_2752662.jpg!bwr800);
+     background-image: url(https://cdn2.vectorstock.com/i/1000x1000/78/91/abstract-light-blue-wavy-background-vector-9097891.jpg);
+    
      background-repeat: no-repeat;
      background-size: cover;
      background-position: center;
-    padding: 120px 0;
+    padding: 220px 0;
     text-align: center;
     font-family: "Poppins", sans-serif;
+    height: 100%;
 }
 
 @keyframes fadeInUp {
@@ -27,14 +29,14 @@
 }
 
 .homepage h1 {
-    color: #fff;
+    color: #050505;
     font-size: 2.9rem;
     margin-bottom: 20px;
     animation: fadeInUp 1.5s ease-out;
 }
 
 .homepage h1 span{
-    color: #05DEE5;
+    color: #0b5658;
 }
 .homepage p {
     color: #fff;
@@ -61,7 +63,8 @@
 
 /* Updated styles for the Feature section */
 .features {
-    background-color: #d1f5f7;
+    /* background-color: #e6f5f5; */
+    background: linear-gradient(to bottom, #fff, #61ebf0);
     padding: 80px 0;
     
 }
@@ -76,10 +79,52 @@
 
 .features h2 {
     color: #073f4b;
-    font-size: 3.4rem;
+    font-size: 2.3rem;
     text-align: center;
-    text-decoration: underline;
+    /* text-decoration: underline; */
     margin-bottom: 40px;
+}
+.middleHead{
+    text-align: center;
+    font-style: italic;
+    margin-top: 7%;
+}
+.card {
+    background-color: #F3F3F3;
+    width: 90%;
+    /* margin: 20px; */
+    margin-top: 10%;
+    margin-left: 4%;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 
+    0 4px 8px rgba(255, 0, 0, 0.2), /* Red shadow */
+    0 -4px 8px rgba(0, 255, 0, 0.2), /* Green shadow */
+    0 0 12px rgba(0, 0, 255, 0.2); /* Blue shadow */
+}
+
+.card-content {
+    display: flex;
+}
+
+.text-content {
+    padding: 20px;
+}
+
+.text-content h2 {
+    margin-bottom: 10px;
+}
+
+.image-content {
+    flex-grow: 1;
+}
+
+.image-content img {
+    margin-top: 7%;
+    margin-left: 5%;
+    width: 60%;
+    height: 70%;
+    border-radius: 10px;
 }
 
 /* .feature-item {
@@ -122,7 +167,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(45deg, #84f1ef, #a2cefd, #a3c4f4, #35acb0, #f2f1c6);
+    /* background: linear-gradient(45deg, #84f1ef, #a2cefd, #a3c4f4, #35acb0, #f2f1c6); */
     border-radius: 12px;
     z-index: -1;
     animation: gradientAnimation 3s linear infinite;
