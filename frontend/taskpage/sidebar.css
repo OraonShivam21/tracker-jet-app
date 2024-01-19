@@ -6,15 +6,14 @@ body {
     margin: 0px;
     /* padding: 0;  */
     /* border: 1px solid red; */
-
-    
+    display: flex;
 }
 
 .sidebar {
     width: 220px;
     background-color: #121212;
      height: 100vh; 
-    padding: 20px; 
+    padding: 20px 20px 0;
    margin-top: 0px;
     /* border: 1px solid red; */
 
@@ -41,30 +40,35 @@ body {
     text-decoration: none;
     /* background-color: #0078D7; */
     border: 1px solid #0078D7;
-    color:rgb(0,129,248);
+    color:#0078D7;
     font-size:14px;
     padding: 12px 40px;
     border-radius: 20px;
     margin: 10px auto;
     width: 120px;
     font-weight:700;
-    transition: background-color 0.3s;
+    transition: all 0.3s;
 }
 
 .go-premium-btn:hover {
-    background-color: #005ba1;
+    color: #fff;
+    background-color: #0078D7;
 }
 
 .menu-item {
     display: flex;
     align-items: center;
+    border-radius: 8px;
     margin-bottom: 10px;
     font-size: 20px;
-    padding: 8px;
+    padding: 10px;
     
 }
-.menu-item:hover{
+.menu-item:hover {
+    background-color: #0078D7;
+    color: #fff;
     cursor: pointer;
+    transition: .3s;
 }
 
 .menu-item i {
@@ -118,21 +122,31 @@ body {
     font-family: sans-serif;
   
     font-weight:700;
-    /* line-height: 400px; */
+    line-height: 50px;
 } 
 
-.add-space-btn {
+.logout-btn {
     display: block;
     text-decoration: none;
     background-color: #0078D7;
     color: white;
+    font-weight: 500;
     padding: 10px 20px;
+    border: 2px solid #0078D7;
     border-radius: 20px;
     margin: 20px auto;
     width: fit-content;
-    transition: background-color 0.3s;
+    transition: all 0.3s;
 }
 
-.add-space-btn:hover {
-    background-color: #005ba1;
+.logout-btn:hover {
+    background-color: transparent;
+    color: #008cff;
+}
+
+.my-day-section {
+    border: 1px solid red;
+    background-color: #121212;
+    width: 100%;
+    height: 99vh;
 }

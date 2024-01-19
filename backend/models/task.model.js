@@ -13,14 +13,14 @@ const taskSchema = new mongoose.Schema(
     subtasks: {
       type: [String],
     },
-    userID: {
-      type: String,
-      required: true,
-    },
     category: {
       type: String,
       enum: ["personal", "work", "shopping"],
       default: "personal",
+    },
+    userID: {
+      type: String,
+      required: true,
     },
     user: {
       type: String,
