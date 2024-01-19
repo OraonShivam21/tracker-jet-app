@@ -186,18 +186,18 @@ userRouter.post("/login",async(req,res)=>{
 })
 
 
-// userRouter.get("/logout",async(req,res)=>{
-//     const access_token = req.headers.authorization?.split(" ")[1];
-//     const refresh_token = req.headers.authorization?.split(" ")[2];
-//     try{
-//     const blacklist = new BlacklistModel({access_token,refresh_token})
-//     await blacklist.save();
-//     res.status(200).json({msg:"User has been logges out"})
-//     }
-//     catch(err){
-//       res.json({err});
-//     }
-// })
+userRouter.get("/logout",async(req,res)=>{
+    const token = req.headers.authorization?.split(" ")[1];
+   
+    try{
+    const blacklist = new BlacklistModel({token})
+    await blacklist.save();
+    res.status(200).json({msg:"User has been logges out"})
+    }
+    catch(err){
+      res.json({err});
+    }
+})
 
 
 
