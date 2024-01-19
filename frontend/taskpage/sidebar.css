@@ -3,20 +3,32 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     /* background-color: #121212; */
     color: #ffffff;
-    margin: 0px;
+    /* margin: 0px; */
     /* padding: 0;  */
     /* border: 1px solid red; */
-    background: url("../assets/blank-blue-halftone-background_53876-114466.avif");
+    background-image: url(../assets/skyblue-gradient-background-advertisers-gradient-hq-wallpaper_189959-513.avif);
+    background-repeat: no-repeat;
     background-size: cover;
-    display: flex;
+    background-position: center;
+    /* background-color: #1f3a39; */
+    
 }
-
+/* .userProfil{
+    padding-top: 30%;
+} */
+.headingP{
+    color: #ffffff;
+    font-size: 19px;
+    margin-top: 15px;
+    margin-left: 20%;
+    text-decoration: underline;
+}
 .sidebar {
-    width: 220px;
-    background-color: #121212;
-     height: 100vh; 
+    width: 250px;
+    background-color: #181818;
+     /* height: 100vh;  */
     padding: 20px; 
-   margin-top: 0px;
+   margin-top: 8%;
     /* border: 1px solid red; */
 
 }
@@ -27,10 +39,17 @@ body {
 }
 
 .profile-name {
-    font-size: 20px;
-    margin-bottom: 5px;
+    font-size: 30px;
+    font-weight: 600;
+    margin-top: 1%;
+    margin-left: 20%;
+    color: rgb(76, 65, 4);
 }
-
+.priority{
+    color: gold;
+    font-size: 19px;
+    margin-left: 3%;
+}
 .profile-plan {
     font-size: 14px;
     color: #aaa;
@@ -43,8 +62,8 @@ body {
     /* background-color: #0078D7; */
     border: 1px solid #0078D7;
     color:rgb(0,129,248);
-    font-size:14px;
-    padding: 12px 40px;
+    font-size:12px;
+    padding: 12px 20px;
     border-radius: 20px;
     margin: 10px auto;
     width: 120px;

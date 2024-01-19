@@ -6,8 +6,8 @@
 .homepage {
     /* background-color: #ecf5f8;
      */
-     background-image: url(https://cdn2.vectorstock.com/i/1000x1000/78/91/abstract-light-blue-wavy-background-vector-9097891.jpg);
-    
+     background-image: url(https://img.freepik.com/free-photo/blank-papers-multicolor-pencils-grey_114579-28815.jpg);
+    /* opacity: 10%; */
      background-repeat: no-repeat;
      background-size: cover;
      background-position: center;
@@ -29,14 +29,14 @@
 }
 
 .homepage h1 {
-    color: #050505;
+    color: goldenrod;
     font-size: 2.9rem;
     margin-bottom: 20px;
     animation: fadeInUp 1.5s ease-out;
 }
 
 .homepage h1 span{
-    color: #0b5658;
+    color: green;
 }
 .homepage p {
     color: #fff;
