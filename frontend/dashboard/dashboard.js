@@ -11,16 +11,19 @@ window.addEventListener("load", (e) => {
   }
 
   menuItems[0].classList.add("active");
-  dashboardContentNavs[0].style.display = "block";
+  dashboardContentNavs[0].classList.add("active");
 });
 
-function menuItemClicked(menuItem) {
+function menuItemClicked(menuItem, dashboardContentID) {
   for (var i = 0; i < menuItems.length; i++) {
     menuItems[i].classList.remove("active");
-    dashboardContentNavs[i].style.display = "none";
   }
-  console.log(menuItem);
   menuItem.classList.add("active");
+
+  for (var i = 0; i < dashboardContentNavs.length; i++) {
+    dashboardContentNavs[i].classList.remove("active");
+  }
+  document.getElementById(dashboardContentID).classList.add("active");
 }
 
 const logoutButton = document.getElementById("logoutBTN");
