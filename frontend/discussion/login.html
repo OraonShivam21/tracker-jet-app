@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="email" type="text" placeholder="email">
+    <input id="password" type="password" placeholder="password">
+    <button onclick="login()">submit</button>
+</body>
+<script>
+    let url='http://localhost:8080'
+    const login = () => {
+    fetch(`${url}/users/login`, {
+        method: "POST",
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify({
+            email: document.getElementById('email').value,
+            pass: document.getElementById('password').value
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.msg === 'login successfull') {
+                    localStorage.setItem('token', data.access_token);
+                    console.log(data);
+                    location.href = './dashboard.html';
+                } else {
+                    console.log(data.msg);
+                }
+    })
+    .catch(err => console.log(err));
+}
+
+</script>
+</html>

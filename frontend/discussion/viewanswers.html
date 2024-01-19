@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/answer.css">
+    <style>
+        /* Styles for the modal */
+        #myModal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #f1f1f1;
+            border: 1px solid #888;
+            z-index: 2;
+        }
+
+        /* Styles for the overlay */
+        #overlay {
+            display: none;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 1;
+        }
+
+        /* Styles for the close button */
+        .close {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+  </head>
+  <body>
+   <div id="question-container">
+    <h4 id="question-title" style="margin-top: 0;"></h4>
+    <div id="question-body"></div>
+    <button id="answer" onclick="openModal()">answer</button>
+   </div>
+    <div id="myModal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <textarea id="answerTextarea" rows="4" cols="50" placeholder="Enter your answer here"></textarea>
+        <button onclick="submitAnswer()">Submit</button>
+    </div>
+
+    <!-- The Overlay -->
+    <div id="overlay"></div>
+    <div id="parent" style="display: flex; flex-direction: column;"></div>
+  </body>
+  <script>
+    let url='http://localhost:8080'
+// pop up
+
+    function openModal() {
+            document.getElementById("myModal").style.display = "block";
+            document.getElementById("overlay").style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+            document.getElementById("overlay").style.display = "none";
+        }
+
+        // adding the answer
+
+        function submitAnswer() {
+            const urlParams = new URLSearchParams(window.location.search);
+      const questionID = urlParams.get("questionid");
+            fetch(
+        `${url}/answers/create/${questionID}`,
+        {
+            method:"POST",
+          headers: {
+            "Content-type": "application/json",
+            authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+          body:JSON.stringify({
+            content: document.getElementById('answerTextarea').value
+          })
+        }
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          print(data);
+        })
+        .catch((err) => console.log(err));
+            closeModal();
+        }
+
+
+
+    const print = (data) => {
+      const title = document.getElementById("question-title");
+      const body = document.getElementById("question-body");
+      title.textContent =`Q. ${data.title}`;
+      body.textContent = data.body;
+    };
+
+    const deleteanswer = (id) => {
+      fetch(
+        `${url}/answers/delete/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.msg === "you are not authorised") {
+            alert("you are not allowed to delete");
+          } else {
+            alert("answer has been deleted");
+            window.location.reload()
+          }
+          console.log(data);
+        })
+        .catch((error) => console.error(error));
+    };
+
+
+
+    document.addEventListener("DOMContentLoaded", async () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const questionID = urlParams.get("questionid");
+      fetch(
+        `${url}/questions/${questionID}`,
+        {
+          headers: {
+            "Content-type": "application/json",
+            authorization: `Bearer ${localStorage.getItem("token")}`,
+          }
+        }
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          print(data);
+        })
+        .catch((err) => console.log(err));
+      getanswerdata(questionID);
+    });
+    const getanswerdata = (questionID) => {
+      fetch(
+        `${url}/answers/${questionID}`,
+        {
+          headers: {
+            "Content-type": "application/json",
+            authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          printanswer(data);
+        })
+        .catch((err) => console.log(err));
+    };
+
+
+    const incupvote = (answerID) => {
+      fetch(
+        `${url}/answers/upvote/${answerID}`,
+        {method :'PATCH',
+          headers: {
+            "Content-type": "application/json",
+            authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          if(data.msg==='you can only vote once')
+          {
+            alert('you can only upvote once')
+          }
+          else{
+            window.location.reload()
+          }
+        })
+        .catch((err) => console.log(err));
+};
+
+const incdownvote = (answerID) => {
+      fetch(
+        `${url}/answers/downvote/${answerID}`,
+        {method :'PATCH',
+          headers: {
+            "Content-type": "application/json",
+            authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          if(data.msg==='you can only vote once')
+          {
+            alert('you can only vote once')
+          }
+          else{
+            window.location.reload()
+          }
+        })
+        .catch((err) => console.log(err));
+};
+
+
+    const printanswer=(alldata)=>{
+        let parent=document.getElementById('parent')
+        alldata.forEach(data=>{
+let card=getcard(data);
+parent.append(card);
+        })
+    }
+const getcard=(data)=>{
+let card=document.createElement('div')
+let content=document.createElement('div')
+let upvote=document.createElement('div')
+let downvote=document.createElement('div')
+let createdAt=document.createElement('div')
+let parent1 = document.createElement("div");
+let name=document.createElement('div')
+let deletebtn=document.createElement('button')
+deletebtn.textContent='delete';
+deletebtn.id='delete-btn'
+deletebtn.addEventListener('click',()=>{
+  deleteanswer(data._id);
+})
+let upvotes=document.createElement('button')
+upvotes.textContent='upvote'
+let downvotes=document.createElement('button')
+downvotes.textContent='downvote'
+upvotes.addEventListener('click',()=>{
+  incupvote(data._id);
+})
+downvotes.addEventListener('click',()=>{
+  incdownvote(data._id);
+})
+card.id='card';
+parent1.id = "username";
+      parent1.append(name, createdAt);
+name.textContent=`by- ${data.username}`
+content.textContent=data.content
+upvote.textContent=`upvote= ${data.upvote}`
+downvote.textContent=`downvote= ${data.downvote}`
+createdAt.textContent=`date- ${data.createdAt.slice(0,10)}`
+card.append(content,parent1,upvote,downvote,deletebtn,upvotes,downvotes)
+return card
+}
+
+  </script>
+</html>
