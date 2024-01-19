@@ -91,12 +91,15 @@
   letter-spacing: 0.5px;
   margin: 5px 0 5px;
 }
+.emailv{
+  margin-top: 40px;
+}
 .otp{
-  margin-top: 20%;
+  margin-top: 2%;
 }
-.btnotp{
+ .btnotp{
   margin-top: 10%;
-}
+} 
 .otphead{
   margin-top: 50%;
 }
