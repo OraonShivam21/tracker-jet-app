@@ -6,7 +6,7 @@ body {
     /* margin: 0px; */
     /* padding: 0;  */
     /* border: 1px solid red; */
-    background-image: url(../assets/skyblue-gradient-background-advertisers-gradient-hq-wallpaper_189959-513.avif);
+    background-image: url("../assets/blank-blue-halftone-background_53876-114466.avif");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -30,15 +30,16 @@ body {
     padding: 20px; 
    margin-top: 8%;
     /* border: 1px solid red; */
-
+    height: 84vh;
+    overflow-y: scroll;
 }
 
- .profile {
+ #profile {
     text-align: center;
     margin-bottom: 30px;
 }
 
-.profile-name {
+#profile-name {
     font-size: 30px;
     font-weight: 600;
     margin-top: 1%;
@@ -50,7 +51,7 @@ body {
     font-size: 19px;
     margin-left: 3%;
 }
-.profile-plan {
+#profile-plan {
     font-size: 14px;
     color: #aaa;
     margin-bottom: 15px;
@@ -128,7 +129,7 @@ body {
     font-size: 30px;
 }
 
-#section-title {
+.section-title {
     margin: 35px 0 10px;
     font-size: 18px;
     color: white ;
@@ -156,3 +157,4 @@ body {
 .add-space-btn:hover {
     background-color: #005ba1;
 }
+
