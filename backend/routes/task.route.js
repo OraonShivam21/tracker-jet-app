@@ -16,8 +16,9 @@ taskRoute.get("/", async (req, res) => {
   }
 });
 
-taskRoute.post("/add", async (req, res) => {
+taskRoute.post("/add/:category", async (req, res) => {
   const payload = req.body;
+  if (req.params.category) payload.category = req.params.category;
   try {
     const task = new TaskModel(payload);
     await task.save();

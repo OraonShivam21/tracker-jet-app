@@ -17,6 +17,11 @@ const taskSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    category: {
+      type: String,
+      enum: ["personal", "work", "shopping"],
+      default: "personal",
+    },
     user: {
       type: String,
       required: true,
