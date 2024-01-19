@@ -195,7 +195,7 @@ userRouter.get("/logout",async(req,res)=>{
     res.status(200).json({msg:"User has been logges out"})
     }
     catch(err){
-      res.json({err});
+      res.status(400).json({err});
     }
 })
 
