@@ -3,7 +3,7 @@ const firstNameInputs = document.getElementById('fname');
 const emailInputs = document.getElementById('remail');
 const passwordInputs = document.getElementById('rpswd');
 const emailLogin = document.getElementById("email");
-const passLoin = document.getElementById("password");
+const passLogin = document.getElementById("password");
 
 const loginBtn = document.getElementById("loginBtn")
 
@@ -56,30 +56,93 @@ const form = document.getElementById("signupForm");
 
 
 const form2 = document.getElementById("otpVerificationForm");
-    form2.addEventListener("submit",(e)=>{
-        e.preventDefault();
-    })
+form2.addEventListener("submit", async(e) => {
+    e.preventDefault();
+});
 
 
-    const verifyUser=()=>{
-    
-      fetch("http://localhost:3000/user/verifyOTP",{
-          method:"POST",
-          headers:{
-              "Content-type":"application/json"
-          },
-          body:JSON.stringify({
-              name:document.getElementById("otp").value
-          })
-      }).then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        // localStorage.setItem('user', JSON.stringify(data.user.name))
+const verifyUser = () => {
+     fetch("http://localhost:3000/user/verifyOTP", {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json",
+            },
+            body: JSON.stringify({
+                email:document.getElementById("emailverify").value,
+                otp: document.getElementById("otp").value,
+            }),
+        })
+        .then(res=>res.json())
+        .then(data =>{
+            if(data.msg === 'User email verified successfully'){
+                alert("Verified")
+            }else{
+                console.log(data.msg);
+                alert("Wrong otp")
+            }
+        })
+    }
+
+//         if (!response.ok) {
+//            window.alert("not verified")
+//         }
+
+//         const data = await response.json();
+//         console.log(data);
+
+//         // Check if OTP verification was successful before showing an alert
+//         if (data.success) {
+//             alert("OTP verified successfully");
+//             // Optionally, you can perform additional actions here if needed
+//         } else {
+//             alert("OTP verified failed");
+//             // Optionally, you can show a different alert or handle the failure in another way
+//         }
+//     } catch (error) {
+//         console.error("Error during OTP verification:", error);
+//         throw error; // Re-throw the error to be caught by the outer try-catch block
+//     }
+// };
+// Loginnn
+const loginForm = document.getElementById("loginForm");
+loginForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+});
+const logbtn = document.getElementById("loginBtn");
+
+logbtn.addEventListener("click", async (e) => {
+e.preventDefault();
+
+try {
+    const response = await fetch("http://localhost:3000/user/login", {
+        method: "POST",
+        headers: {
+            "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+            email: emailLogin.value,
+            password: passLogin.value,
+        }),
+    });
+
+    if (!response.ok) {
+      window.alert("please enter right credintials")
+        throw new Error(`Login failed: ${response.statusText}`);
         
-  
-      })
-      .catch((err) => console.log(err));
-  }
+    }else{
+
+    const data = await response.json();
+    console.log(data);
+
+    localStorage.setItem("token", data.token);
+    localStorage.setItem("name", data.name);
+    location.href = "../taskpage/sidebar.html";
+    }
+} catch (err) {
+    console.log(err.message);
+}
+});
+
 
 
 

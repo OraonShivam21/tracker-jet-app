@@ -12,7 +12,9 @@ nav {
     z-index: 1000;
     transition: background-color 0.3s ease-in-out;
 }
-
+/* .navbar-scrolled {
+    background-color: #3498db;
+} */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -67,7 +69,15 @@ nav {
     font-size: 1.5rem;
     color: white;
 }
+#navbar {
+    background-color: transparent;
+    transition: background-color 0.3s ease; /* Add a smooth transition effect */
+}
 
+/* Add a new style for the navbar with a solid background color */
+#navbar.navbar-scrolled {
+    background-color: #3498db; /* Blue color */
+}
 
 
 @media screen and (max-width: 768px) {
