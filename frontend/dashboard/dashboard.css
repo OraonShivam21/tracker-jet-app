@@ -129,7 +129,7 @@ body {
     font-size: 30px;
 }
 
-#section-title {
+.section-title {
     margin: 35px 0 10px;
     font-size: 18px;
     color: white ;
