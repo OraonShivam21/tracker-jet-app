@@ -6,12 +6,12 @@
 .homepage {
     /* background-color: #ecf5f8;
      */
-     background-image: url(https://img.freepik.com/free-photo/blank-papers-multicolor-pencils-grey_114579-28815.jpg);
+     background-image: url(https://wallpapers.com/images/hd/simple-zoom-background-byn6wa4gnwgr86fa.jpg);
     /* opacity: 10%; */
      background-repeat: no-repeat;
      background-size: cover;
      background-position: center;
-    padding: 220px 0;
+      padding: 250px 0;
     text-align: center;
     font-family: "Poppins", sans-serif;
     height: 100%;
@@ -29,19 +29,25 @@
 }
 
 .homepage h1 {
-    color: goldenrod;
-    font-size: 2.9rem;
+    color: #1f75ae;
+    /* font-size: 2.9rem; */
     margin-bottom: 20px;
     animation: fadeInUp 1.5s ease-out;
+    font-size: 3.9rem;
+    font-weight: 700;
 }
 
 .homepage h1 span{
-    color: green;
+    color: rgb(239, 205, 10);
+    font-size: 4.1rem;
+    
+    
 }
 .homepage p {
-    color: #fff;
-    font-size: 1.2rem;
+    color: #111010;
+    font-size: 1.4rem;
     margin-bottom: 40px;
+    font-weight: 600;
     animation: fadeInUp 1.5s ease-out;
 }
 
@@ -92,19 +98,19 @@
 .card {
     background-color: #F3F3F3;
     width: 90%;
-    /* margin: 20px; */
     margin-top: 10%;
     margin-left: 4%;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 
-    0 4px 8px rgba(255, 0, 0, 0.2), /* Red shadow */
-    0 -4px 8px rgba(0, 255, 0, 0.2), /* Green shadow */
-    0 0 12px rgba(0, 0, 255, 0.2); /* Blue shadow */
+        0 4px 8px rgba(255, 0, 0, 0.2), /* Red shadow */
+        0 -4px 8px rgba(0, 255, 0, 0.2), /* Green shadow */
+        0 0 12px rgba(0, 0, 255, 0.2); /* Blue shadow */
 }
 
 .card-content {
     display: flex;
+    flex-direction: row; /* Initially set as a column layout */
 }
 
 .text-content {
@@ -113,18 +119,48 @@
 
 .text-content h2 {
     margin-bottom: 10px;
+    font-size: 3.8rem;
+}
+.text-content p{
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    margin-top: 10px;
 }
 
 .image-content {
-    flex-grow: 1;
+    width: 100%; /* Make the image take full width */
+    order: -1; /* Move the image to the top on smaller screens */
 }
 
 .image-content img {
-    margin-top: 7%;
-    margin-left: 5%;
-    width: 60%;
-    height: 70%;
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
     border-radius: 10px;
+}
+
+/* Media Query for Tablets and Smaller Screens */
+@media (max-width: 768px) {
+    .card {
+        width: 80%; /* Adjust width for smaller screens */
+    }
+    .card-content {
+        display: flex;
+        flex-direction: column; /* Initially set as a column layout */
+    }
+    .text-content p{
+        margin-bottom: 10px;
+        font-size: 15px;
+        margin-top: 10px;
+    }
+    .text-content h2{
+        margin-bottom: 10px;
+        font-size: 30px;
+        /* margin-top: 10px; */
+    }
+
+    .image-content {
+        order: 1; /* Move the image back to the bottom */
+    }
 }
 
 /* .feature-item {

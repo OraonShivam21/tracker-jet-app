@@ -18,12 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
       // Hide signup form, show OTP verification form
       signupForm.style.display = 'none';
       otpVerificationForm.style.display = 'block';
-  });
 
-  verifyOtpBtn.addEventListener('click', function () {
-      // Perform OTP verification logic here
-      // If verification is successful, you can redirect or take further actions
-      alert('OTP verified. Redirecting to login or other actions.');
   });
 });
 
@@ -75,10 +70,12 @@ const verifyUser = () => {
         .then(res=>res.json())
         .then(data =>{
             if(data.msg === 'User email verified successfully'){
-                alert("Verified")
+                document.getElementById("msgDisplay").innerText="Verification Successful 😊!"
+                // alert("Verified")
             }else{
                 console.log(data.msg);
-                alert("Wrong otp")
+                document.getElementById("msgDisplay").innerText="Wrong OTP, Try Again !"
+                // alert("Wrong otp")
             }
         })
     }
@@ -112,7 +109,9 @@ const logbtn = document.getElementById("loginBtn");
 
 logbtn.addEventListener("click", async (e) => {
 e.preventDefault();
-
+// if(!emailLogin.value || passLogin.value){
+//     document.getElementById("msgDisplayTag").innerText = "Empty Field !"
+// }else{
 try {
     const response = await fetch("http://localhost:3000/user/login", {
         method: "POST",
@@ -124,9 +123,9 @@ try {
             password: passLogin.value,
         }),
     });
-
+    
     if (!response.ok) {
-      window.alert("please enter right credintials")
+        document.getElementById("msgDisplayTag").innerText = "Wrong Email or Password"
         throw new Error(`Login failed: ${response.statusText}`);
         
     }else{
@@ -135,7 +134,7 @@ try {
     console.log(data);
 
     localStorage.setItem("token", data.token);
-    localStorage.setItem("name", data.name);
+    localStorage.setItem("name", data.user.name);
     location.href = "../taskpage/sidebar.html";
     }
 } catch (err) {
