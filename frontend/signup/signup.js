@@ -135,7 +135,7 @@ try {
 
     localStorage.setItem("token", data.token);
     localStorage.setItem("name", data.user.name);
-    location.href = "../taskpage/sidebar.html";
+    location.href = "../dashboard/dashboard.html";
     }
 } catch (err) {
     console.log(err.message);
