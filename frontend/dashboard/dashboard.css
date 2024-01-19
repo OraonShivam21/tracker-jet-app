@@ -13,9 +13,9 @@ body {
     /* background-color: #1f3a39; */
     
 }
-/* .userProfil{
+.userProfil{
     padding-top: 30%;
-} */
+}
 .headingP{
     color: #ffffff;
     font-size: 19px;
@@ -26,11 +26,11 @@ body {
 .sidebar {
     width: 250px;
     background-color: #181818;
-     /* height: 100vh;  */
+     height: 100vh; 
     padding: 20px; 
-   margin-top: 8%;
+   /* margin-top: 8%; */
     /* border: 1px solid red; */
-    height: 84vh;
+    /* height: 84vh; */
     overflow-y: scroll;
 }
 
@@ -39,21 +39,32 @@ body {
     margin-bottom: 30px;
 }
 
-#profile-name {
-    font-size: 30px;
+.profile-name {
+    font-size: 25px;
     font-weight: 600;
-    margin-top: 1%;
+    /* margin-bottom: 5%; */
     margin-left: 20%;
-    color: rgb(76, 65, 4);
+    color: rgb(222, 220, 210);
+}
+.fa-solid{
+    color: #e6dfdf;
+    /* height: 100px;
+    width: 50px; */
+    font-size: 23px;
+    margin-left: 10px;
+    /* padding-top: 10%; */
+}
+.username{
+    margin-left: px;
 }
 .priority{
     color: gold;
     font-size: 19px;
     margin-left: 3%;
 }
-#profile-plan {
+.profile-plan {
     font-size: 14px;
-    color: #aaa;
+    color: #e6dfdf;
     margin-bottom: 15px;
 } 
 
@@ -128,7 +139,12 @@ body {
       /* margin-left: 100px; */
     font-size: 30px;
 }
-
+/* .logoutBtn{
+    color: white;
+    background-color: blue;
+    padding: 10px 40px;
+    border-radius: 5%;
+} */
 .section-title {
     margin: 35px 0 10px;
     font-size: 18px;
