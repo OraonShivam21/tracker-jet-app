@@ -48,7 +48,61 @@ body {
     color: #000000;
     font-weight: 600;
   }
-  
+  #videoImage{
+    width: 100%;
+
+}
+.gridVideo{
+    height: 400px;
+}
+#playButton {
+    /* width: 60px;
+    height: 60px;
+    border: 6px solid grey;
+    border-radius: 50%;
+    position: absolute;
+    top: 43%;
+    margin-left: 23%; */
+    width: 60px;
+    height: 60px;
+    border: 6px solid grey;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 27%;
+    transform: translate(-50%, -50%);
+}
+
+#triangle {
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 30px solid grey;
+    rotate: 90deg;
+    margin: auto;
+    margin-top: 10px;
+    margin-left: 9px;
+}
+.Video_div:hover {
+    filter: brightness(0.6);
+    
+    
+}
+.Video_div:hover {
+    #playButton {
+        margin-left: 24%;
+        border-color: white;
+    }
+    #triangle {
+        margin-left: 23%;
+    }
+}
+#playButton:hover {
+    border-color: white;
+    position: absolute;
+}
+
   footer {
     /* margin-top: 5px; */
     font-style: italic;

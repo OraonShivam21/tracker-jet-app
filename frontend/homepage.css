@@ -157,9 +157,27 @@
         font-size: 30px;
         /* margin-top: 10px; */
     }
-
+    .container h1{
+        font-size: 20px;
+    }
+    .container h1 span{
+        font-size: 20px;
+    }
+    .container p{
+        font-size: 16px;
+    }
+    .container a{
+        padding: 6px 10px;
+    }
     .image-content {
         order: 1; /* Move the image back to the bottom */
+    }
+    .footer-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        max-width: 1200px;
+        margin: 0 auto;
     }
 }
 

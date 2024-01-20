@@ -71,3 +71,36 @@ document.addEventListener('DOMContentLoaded', function () {
   // Initial load
   fetchAndDisplayQuotes(currentPage);
 });
+
+let playButton = document.getElementById("playButton");
+let palyLink = document.getElementById("playLink");
+let Video_div = document.getElementsByClassName("Video_div");
+let gridVideo = document.getElementsByClassName("gridVideo");
+let videoImage = document.getElementById("videoImage");
+
+videoImage.addEventListener("click", (e) => {
+  playButton.style.display = "none";
+
+  videoImage.style.display = "none";
+  let newIframe = document.createElement("iframe");
+  newIframe.className = "gridVideo";
+  newIframe.width = "100%";
+  newIframe.height = "100%";
+  newIframe.src = "https://www.youtube.com/embed/rXcp6s0VjZk";
+  newIframe.allowFullscreen = true;
+  let videoDiv = document.querySelector(".Video_div");
+  videoDiv.appendChild(newIframe);
+});
+// videoImage.addEventListener("click", (e) => {
+//   playButton.style.display = "none";
+
+//   videoImage.style.display = "none";
+//   let newIframe = document.createElement("iframe");
+//   newIframe.className = "gridVideo";
+//   newIframe.width = "100%";
+//   newIframe.height = "100%";
+//   newIframe.src = "https://youtu.be/W0DM5lcj6mw?si=NyVPZbtFMevpOdyQ";
+//   newIframe.allowFullscreen = true;
+//   let videoDiv = document.querySelector(".Video_div");
+//   videoDiv.appendChild(newIframe);
+// });
