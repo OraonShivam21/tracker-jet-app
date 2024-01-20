@@ -12,7 +12,7 @@ window.addEventListener("load", (e) => {
   const timeNow = new Date().getHours();
   const greeting = document.getElementById("greeting");
 
-  if (timeNow >= 0 && timeNow < 12) {
+  if (timeNow >= 6 && timeNow < 12) {
     greeting.innerText = "Good Morning";
   } else if (timeNow >= 12 && timeNow < 20) {
     greeting.innerText = "Good Evening";
@@ -30,8 +30,8 @@ window.addEventListener("load", (e) => {
     headingUsername.style.textTransform = "capitalize";
   }
 
-  menuItems[1].classList.add("active");
-  dashboardContentNavs[1].classList.add("active");
+  menuItems[0].classList.add("active");
+  dashboardContentNavs[0].classList.add("active");
 
   fetchAndShowMyDayTask();
 });
@@ -42,19 +42,25 @@ function menuItemClicked(menuItem, dashboardContentID) {
   }
   menuItem.classList.add("active");
 
-  if(dashboardContentID === "discussionForum") location.replace("../discussion/dashboard.html");
+  if (dashboardContentID === "discussionForum")
+    location.replace("../discussion/dashboard.html");
 
   for (var i = 0; i < dashboardContentNavs.length; i++) {
     dashboardContentNavs[i].classList.remove("active");
   }
   document.getElementById(dashboardContentID).classList.add("active");
-  fetchAndShowMyDayTask();
+
+  if (dashboardContentID === "personal-list-section") fetchAndShowPersonalTask();
+  else if (dashboardContentID === "work-list-section") fetchAndShowWorkTask();
+  else if (dashboardContentID === "assignment-list-section") fetchAndShowAssignmentTask();
+  else fetchAndShowMyDayTask();
 }
 
-const addMyDayTaskBtn = document.getElementById("add-my-day-task-btn");
 const addMyDayTask = document.getElementById("addMyDayTask");
-const addAllMyTaskBtn = document.getElementById("add-all-my-task-btn");
 const addAllMyTask = document.getElementById("addAllMyTask");
+const personalTask = document.getElementById("personalTask");
+const workTask = document.getElementById("workTask");
+const assignmentTask = document.getElementById("assignmentTask");
 
 addMyDayTask.addEventListener("keydown", (e) => {
   if (e.key === "Enter") addMyDayNewTask(1);
@@ -64,16 +70,46 @@ addAllMyTask.addEventListener("keydown", (e) => {
   if (e.key === "Enter") addMyDayNewTask(2);
 });
 
+personalTask.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") addMyDayNewTask(3);
+});
+
+workTask.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") addMyDayNewTask(4);
+});
+
+assignmentTask.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") addMyDayNewTask(5);
+});
+
 function addMyDayNewTask(num) {
   const taskAddURL = "http://localhost:3000/tasks/add";
-  const title = num === 1 ? addMyDayTask.value : addAllMyTask.value;
+  let payload = {
+    title: "",
+    category: "",
+    status: false,
+  };
+  if (num === 1 || num === 2) {
+    payload.title = num === 1 ? addMyDayTask.value : addAllMyTask.value;
+    payload.category = "personal";
+  } else if (num === 3) {
+    payload.title = personalTask.value;
+    payload.category = "personal";
+  } else if (num === 4) {
+    payload.title = workTask.value;
+    payload.category = "work";
+  } else if (num === 5) {
+    payload.title = assignmentTask.value;
+    payload.category = "assignment";
+  }
   fetch(taskAddURL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({ title, status: false }),
+    // body: JSON.stringify({ title, status: false })
+    body: JSON.stringify(payload),
   })
     .then((res) => res.json())
     .then((data) => {
@@ -86,9 +122,14 @@ function addMyDayNewTask(num) {
 
 const myDayTasksContent = document.getElementById("my-day-tasks-content");
 const allMyTasksContent = document.getElementById("all-my-tasks-content");
+const personalTasksContent = document.getElementById("personal-tasks-content");
+const workTasksContent = document.getElementById("work-tasks-content");
+const assignmentTasksContent = document.getElementById(
+  "assignment-tasks-content"
+);
 
 function fetchAndShowMyDayTask() {
-  const getTasksURL = "http://localhost:3000/tasks";
+  const getTasksURL = `http://localhost:3000/tasks`;
 
   fetch(getTasksURL, {
     method: "GET",
@@ -104,7 +145,7 @@ function fetchAndShowMyDayTask() {
       document.getElementById("my-day-badge").innerText = data.tasks.length;
       document.getElementById("all-tasks-badge").innerText = data.tasks.length;
       document.getElementById("calender-badge").innerText = data.tasks.length;
-      renderMyDayTasks(data.tasks);
+      renderMyDayTasks(data.tasks, 1);
     })
     .catch((error) => {
       console.log(error);
@@ -115,12 +156,97 @@ function fetchAndShowMyDayTask() {
     });
 }
 
-function renderMyDayTasks(tasks) {
+function fetchAndShowPersonalTask() {
+  const getTasksURL = `http://localhost:3000/tasks?category=personal`;
+
+  fetch(getTasksURL, {
+    method: "GET",
+    headers: {
+      "Content-type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.error) throw data.error;
+      console.log(data.tasks);
+      document.getElementById("personal-badge").innerText = data.tasks.length;
+      renderMyDayTasks(data.tasks, 2);
+    })
+    .catch((error) => {
+      console.log(error);
+      myDayTasksContent.style.position = "absolute";
+      myDayTasksContent.style.bottom = "6rem";
+      myDayTasksContent.style.opacity = ".7";
+      myDayTasksContent.innerText = error;
+    });
+}
+
+function fetchAndShowWorkTask() {
+  const getTasksURL = `http://localhost:3000/tasks?category=work`;
+
+  fetch(getTasksURL, {
+    method: "GET",
+    headers: {
+      "Content-type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.error) throw data.error;
+      console.log(data.tasks);
+      document.getElementById("work-badge").innerText = data.tasks.length;
+      renderMyDayTasks(data.tasks, 3);
+    })
+    .catch((error) => {
+      console.log(error);
+      myDayTasksContent.style.position = "absolute";
+      myDayTasksContent.style.bottom = "6rem";
+      myDayTasksContent.style.opacity = ".7";
+      myDayTasksContent.innerText = error;
+    });
+}
+
+function fetchAndShowAssignmentTask() {
+  const getTasksURL = `http://localhost:3000/tasks?category=assignment`;
+
+  fetch(getTasksURL, {
+    method: "GET",
+    headers: {
+      "Content-type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.error) throw data.error;
+      console.log(data.tasks);
+      document.getElementById("assignment-badge").innerText = data.tasks.length;
+      renderMyDayTasks(data.tasks, 4);
+    })
+    .catch((error) => {
+      console.log(error);
+      myDayTasksContent.style.position = "absolute";
+      myDayTasksContent.style.bottom = "6rem";
+      myDayTasksContent.style.opacity = ".7";
+      myDayTasksContent.innerText = error;
+    });
+}
+
+function renderMyDayTasks(tasks, num) {
   myDayTasksContent.innerHTML = null;
   allMyTasksContent.innerHTML = null;
+  personalTasksContent.innerHTML = null;
+  workTasksContent.innerHTML = null;
+  assignmentTasksContent.innerHTML = null;
   tasks.forEach((task) => {
-    myDayTasksContent.appendChild(createMyDayTaskCard(task));
-    allMyTasksContent.appendChild(createMyDayTaskCard(task));
+    if (num === 1) {
+      myDayTasksContent.appendChild(createMyDayTaskCard(task));
+      allMyTasksContent.appendChild(createMyDayTaskCard(task));
+    } else if (num === 2) personalTasksContent.appendChild(createMyDayTaskCard(task));
+    else if (num === 3) workTasksContent.appendChild(createMyDayTaskCard(task));
+    else if (num === 4) assignmentTasksContent.appendChild(createMyDayTaskCard(task));
   });
 
   const taskCards = document.getElementsByClassName("task-card");
@@ -140,7 +266,10 @@ function renderMyDayTasks(tasks) {
         .then((res) => res.json())
         .then((data) => {
           console.log(data.msg);
-          fetchAndShowMyDayTask();
+          if (num === 1) fetchAndShowMyDayTask();
+          else if (num === 2) fetchAndShowPersonalTask();
+          else if (num === 3) fetchAndShowWorkTask();
+          else if (num === 4) fetchAndShowAssignmentTask();
         })
         .catch((error) => console.error(error));
     });

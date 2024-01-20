@@ -39,7 +39,7 @@
         <!-- <i class="far fa-sun"></i> -->
         <i class="fas fa-bullseye"></i>
         <span id="myDay" class="menu-text">My day</span>
-        <span class="badge" id="my-day-badge">3</span>
+        <span class="badge" id="my-day-badge">0</span>
       </div>
       <div
         class="menu-item"
@@ -47,7 +47,7 @@
       >
         <i class="far fa-calendar-alt"></i>
         <span id="AllMyTask" class="menu-text">All my tasks</span>
-        <span class="badge" id="all-tasks-badge">4</span>
+        <span class="badge" id="all-tasks-badge">0</span>
       </div>
       <div
         class="menu-item"
@@ -56,7 +56,7 @@
         <i class="far fa-calendar-alt"></i>
 
         <span id="calendar" class="menu-text">My Calendar</span>
-        <span class="badge" id="calender-badge">4</span>
+        <span class="badge" id="calender-badge">0</span>
       </div>
 
       <div class="menu-item-title">
@@ -70,7 +70,7 @@
       >
         <!-- <i class="far fa-circle"></i>  -->
         <span id="personal" class="menu-text">Personal</span>
-        <span class="badge" id="personal-badge">1</span>
+        <span class="badge" id="personal-badge">0</span>
       </div>
       <div
         class="menu-item"
@@ -78,15 +78,15 @@
       >
         <!-- <i class="far fa-circle"></i> -->
         <span id="work" class="menu-text">Work</span>
-        <span class="badge" id="work-badge">2</span>
+        <span class="badge" id="work-badge">0</span>
       </div>
       <div
         class="menu-item"
-        onclick="menuItemClicked(this, 'shopping-list-section')"
+        onclick="menuItemClicked(this, 'assignment-list-section')"
       >
         <!-- <i class="far fa-circle"></i> -->
         <span id="shopping" class="menu-text">Assignment</span>
-        <span class="badge" id="assignment-badge">3</span>
+        <span class="badge" id="assignment-badge">0</span>
       </div>
       <div class="menu-item" onclick="menuItemClicked(this, 'discussionForum')">
         <i class="material-symbols-outlined"> group </i>
@@ -188,13 +188,97 @@
         my-calender-section
       </div>
       <div class="dashboard-content-nav" id="personal-list-section">
-        personal-list-section
+        <div class="all-my-tasks-heading">
+          <div class="all-my-tasks-heading-left">
+            <span class="material-symbols-outlined"> article </span>
+            <h5>Personal</h5>
+            <span class="material-symbols-outlined"> more_horiz </span>
+          </div>
+          <div class="all-my-tasks-heading-right">
+            <span class="material-symbols-outlined"> sync </span>
+            <span class="material-symbols-outlined"> headset_mic </span>
+            <span class="material-symbols-outlined">
+              check_box_outline_blank
+            </span>
+            <span class="material-symbols-outlined"> search </span>
+          </div>
+        </div>
+        <div id="personal-tasks-content">
+          <!-- show all tasks here -->
+        </div>
+        <div class="my-day-add-tasks">
+          <button id="personal-task-btn">
+            +
+            <input
+              type="text"
+              name="personalTasks"
+              id="personalTask"
+              placeholder="Add task"
+            />
+          </button>
+        </div>
       </div>
       <div class="dashboard-content-nav" id="work-list-section">
-        work-list-section
+        <div class="all-my-tasks-heading">
+          <div class="all-my-tasks-heading-left">
+            <span class="material-symbols-outlined"> article </span>
+            <h5>Personal</h5>
+            <span class="material-symbols-outlined"> more_horiz </span>
+          </div>
+          <div class="all-my-tasks-heading-right">
+            <span class="material-symbols-outlined"> sync </span>
+            <span class="material-symbols-outlined"> headset_mic </span>
+            <span class="material-symbols-outlined">
+              check_box_outline_blank
+            </span>
+            <span class="material-symbols-outlined"> search </span>
+          </div>
+        </div>
+        <div id="work-tasks-content">
+          <!-- show all tasks here -->
+        </div>
+        <div class="my-day-add-tasks">
+          <button id="work-task-btn">
+            +
+            <input
+              type="text"
+              name="workTasks"
+              id="workTask"
+              placeholder="Add task"
+            />
+          </button>
+        </div>
       </div>
-      <div class="dashboard-content-nav" id="shopping-list-section">
-        shopping-list-section
+      <div class="dashboard-content-nav" id="assignment-list-section">
+        <div class="all-my-tasks-heading">
+          <div class="all-my-tasks-heading-left">
+            <span class="material-symbols-outlined"> article </span>
+            <h5>Personal</h5>
+            <span class="material-symbols-outlined"> more_horiz </span>
+          </div>
+          <div class="all-my-tasks-heading-right">
+            <span class="material-symbols-outlined"> sync </span>
+            <span class="material-symbols-outlined"> headset_mic </span>
+            <span class="material-symbols-outlined">
+              check_box_outline_blank
+            </span>
+            <span class="material-symbols-outlined"> search </span>
+          </div>
+        </div>
+        <div id="assignment-tasks-content">
+          <!-- show all tasks here -->
+        </div>
+        <div class="my-day-add-tasks">
+          <button id="assignment-task-btn">
+            +
+            <input
+              type="text"
+              name="assignmentTask"
+              id="assignmentTask"
+              placeholder="Add task"
+            />
+          </button>
+        </div>
       </div>
     </div>
     <script
