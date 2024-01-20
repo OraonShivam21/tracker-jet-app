@@ -13,7 +13,7 @@ const auth = async (req, res, next) => {
 
     const decoded = jwt.verify(access_token, process.env.accessSecret);
     if (!decoded) throw "Unauthorized: You're not authorized";
-    req.body.userID = decoded.userID;
+    req.body.userID = decoded.userId;
     req.body.user = decoded.user;
     next();
   } catch (error) {

@@ -3,6 +3,9 @@ const dashboardContentNavs = document.getElementsByClassName(
   "dashboard-content-nav"
 );
 
+// localStorage.setItem("name", "Shivam");
+// localStorage.setItem("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWE3ZGRmNWFjZjA1OTdlYjQzY2QxYTQiLCJ1c2VyIjoiU2hpdmFtIiwiaWF0IjoxNzA1NzQ3OTc2fQ.yB5gz7MsY9oRdtVlLuC8erFUYVwbMYxIT2oNqZNaINo")
+
 const token = localStorage.getItem("token");
 
 window.addEventListener("load", (e) => {
@@ -61,6 +64,7 @@ function addMyDayNewTask() {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
+    body: JSON.stringify({ title }),
   })
     .then((res) => res.json())
     .then((data) => {
@@ -71,8 +75,10 @@ function addMyDayNewTask() {
     .catch((error) => console.log(error));
 }
 
+const myDayTasksContent = document.getElementById("my-day-tasks-content");
+
 function fetchAndShowMyDayTask() {
-  const getTasksURL = "http://localhost:3000/tasks/";
+  const getTasksURL = "http://localhost:3000/tasks";
 
   fetch(getTasksURL, {
     method: "GET",
@@ -81,15 +87,28 @@ function fetchAndShowMyDayTask() {
       Authorization: `Bearer ${token}`,
     },
   })
-    .then(res => res.json())
-    .then(data => {
+    .then((res) => res.json())
+    .then((data) => {
       if (data.error) throw data.error;
       renderMyDayTasks(data.tasks);
     })
-    .catch(error => console.log(error));
+    .catch((error) => {
+      console.log(error);
+      myDayTasksContent.style.position = "absolute";
+      myDayTasksContent.style.bottom = "6rem";
+      myDayTasksContent.style.opacity = ".7";
+      myDayTasksContent.innerText = error;
+    });
 }
 
-function renderMyDayTasks(data) {
+function renderMyDayTasks(tasks) {
+  myDayTasksContent.innerHTML = null;
+  tasks.forEach(task => {
+    myDayTasksContent.appendChild(createMyDayTaskCard(task));
+  });
+}
+
+function createMyDayTaskCard(task) {
   
 }
 

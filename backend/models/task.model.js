@@ -6,8 +6,9 @@ const taskSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    subtasks: {
-      type: [String],
+    status: {
+      type: boolean,
+      required: true,
     },
     category: {
       type: String,
