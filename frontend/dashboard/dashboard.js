@@ -117,7 +117,10 @@ function addMyDayNewTask(num) {
     .then((data) => {
       if (data.error) throw data.error;
       console.log(data.msg);
-      fetchAndShowMyDayTask();
+      if (num === 1 || num === 2) fetchAndShowMyDayTask();
+      else if (num === 3) fetchAndShowPersonalTask();
+      else if (num === 4) fetchAndShowWorkTask();
+      else if (num === 5) fetchAndShowAssignmentTask();
     })
     .catch((error) => console.log(error));
 }
