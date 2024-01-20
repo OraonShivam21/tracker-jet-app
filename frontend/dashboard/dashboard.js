@@ -42,6 +42,8 @@ function menuItemClicked(menuItem, dashboardContentID) {
   }
   menuItem.classList.add("active");
 
+  if(dashboardContentID === "discussionForum") location.replace("../discussion/dashboard.html");
+
   for (var i = 0; i < dashboardContentNavs.length; i++) {
     dashboardContentNavs[i].classList.remove("active");
   }
