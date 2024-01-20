@@ -15,8 +15,10 @@ const auth = async (req, res, next) => {
     if (!decoded) throw "Unauthorized: You're not authorized";
     req.body.userID = decoded.userId;
     req.body.user = decoded.user;
+    req.body.username=decoded.username;
     next();
   } catch (error) {
+    console.log(error)
     res.status(400).json({ error });
   }
 };
