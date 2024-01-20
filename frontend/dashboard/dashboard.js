@@ -3,13 +3,15 @@ const dashboardContentNavs = document.getElementsByClassName(
   "dashboard-content-nav"
 );
 
+const token = localStorage.getItem("token");
+
 window.addEventListener("load", (e) => {
   const timeNow = new Date().getHours();
   const greeting = document.getElementById("greeting");
 
-  if(timeNow >= 0 && timeNow < 12) {
+  if (timeNow >= 0 && timeNow < 12) {
     greeting.innerText = "Good Morning";
-  } else if(timeNow >= 12 && timeNow < 20) {
+  } else if (timeNow >= 12 && timeNow < 20) {
     greeting.innerText = "Good Evening";
   } else {
     greeting.innerText = "Good Night";
@@ -27,6 +29,8 @@ window.addEventListener("load", (e) => {
 
   menuItems[0].classList.add("active");
   dashboardContentNavs[0].classList.add("active");
+
+  fetchAndShowMyDayTask();
 });
 
 function menuItemClicked(menuItem, dashboardContentID) {
@@ -41,16 +45,57 @@ function menuItemClicked(menuItem, dashboardContentID) {
   document.getElementById(dashboardContentID).classList.add("active");
 }
 
+const addMyDayTaskBtn = document.getElementById("add-my-day-task-btn");
+const addMyDayTask = document.getElementById("addMyDayTask");
+
+addMyDayTask.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") addMyDayNewTask();
+});
+
 function addMyDayNewTask() {
   const taskAddURL = "http://localhost:3000/tasks/add";
+  const title = addMyDayTask.value;
+  fetch(taskAddURL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.error) throw data.error;
+      console.log(data.msg);
+      fetchAndShowMyDayTask();
+    })
+    .catch((error) => console.log(error));
+}
+
+function fetchAndShowMyDayTask() {
+  const getTasksURL = "http://localhost:3000/tasks/";
+
+  fetch(getTasksURL, {
+    method: "GET",
+    headers: {
+      "Content-type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then(res => res.json())
+    .then(data => {
+      if (data.error) throw data.error;
+      renderMyDayTasks(data.tasks);
+    })
+    .catch(error => console.log(error));
+}
+
+function renderMyDayTasks(data) {
   
 }
 
 const logoutButton = document.getElementById("logoutBTN");
 logoutButton.addEventListener("click", (e) => {
   e.preventDefault();
-
-  const token = localStorage.getItem("token");
   console.log(token);
 
   fetch("http://localhost:3000/user/logout", {
