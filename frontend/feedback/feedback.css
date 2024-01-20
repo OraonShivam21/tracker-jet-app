@@ -7,7 +7,7 @@ body, html {
   }
   
   .background-image {
-    background-image: url('https://st4.depositphotos.com/18071024/20132/i/450/depositphotos_201322754-stock-photo-set-metal-hexagons-dark-plane.jpg');
+    background-image: url(https://img.freepik.com/premium-photo/blue-background-with-white-stripe-that-says-seagull_896342-19.jpg);
     background-size: cover;
     background-position: center;
     height: 100%;
@@ -23,7 +23,7 @@ body, html {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); /* Overlay color */
+    background-color: rgba(121, 117, 117, 0.6); 
   }
   
   .container {
