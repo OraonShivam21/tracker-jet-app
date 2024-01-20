@@ -6,16 +6,13 @@ const taskSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    body: {
-      type: String,
+    status: {
+      type: Boolean,
       required: true,
-    },
-    subtasks: {
-      type: [String],
     },
     category: {
       type: String,
-      enum: ["personal", "work", "shopping"],
+      enum: ["personal", "work", "assignment"],
       default: "personal",
     },
     userID: {

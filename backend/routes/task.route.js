@@ -7,18 +7,20 @@ const taskRoute = express.Router();
 taskRoute.use(auth);
 
 taskRoute.get("/", async (req, res) => {
+  console.log("clicked to get tasks");
   try {
-    const tasks = await TaskModel.find();
+    const tasks = await TaskModel.find({ userID: req.body.userID });
     if (tasks.length === 0) throw "Please create some tasks first";
     res.status(200).json({ tasks });
   } catch (error) {
-    res.status(400).json({ error });
+    res.status(400).json({ error: "some error" });
   }
 });
 
-taskRoute.post("/add/:category", async (req, res) => {
+taskRoute.post("/add", async (req, res) => {
   const payload = req.body;
-  if (req.params.category) payload.category = req.params.category;
+  console.log(req.body);
+  if (req.query.category) payload.category = req.query.category;
   try {
     const task = new TaskModel(payload);
     await task.save();

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sidebar UI</title>
+    <title>Dashboard</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -95,7 +95,7 @@
         onclick="menuItemClicked(this, 'shopping-list-section')"
       >
         <!-- <i class="far fa-circle"></i> -->
-        <span id="shopping" class="menu-text">Shopping</span>
+        <span id="shopping" class="menu-text">Assignment</span>
         <span class="badge">3</span>
       </div>
 
@@ -131,11 +131,33 @@
           </div>
         </div>
         <div id="my-day-tasks-content">
-            <!-- show all tasks here -->
-            <div class="task-card">
-                <h4 class="title">My First task</h4>
-                <p class="body">This is my very first task</p>
-            </div>
+          <!-- show all tasks here -->
+          <!-- <div class="task-card">
+            <input
+              type="checkbox"
+              name="task-card-checkbox"
+              id="task-card-checkbox"
+            />
+            <label for="task-card-checkbox">
+              <div class="task-card-heading">
+                My-Task
+                <span class="material-symbols-outlined"> chevron_right </span>
+                <span>Personal</span>
+              </div>
+              <h5 class="title">Added new task</h5>
+            </label>
+          </div> -->
+        </div>
+        <div class="my-day-add-tasks">
+          <button id="add-my-day-task-btn">
+            +
+            <input
+              type="text"
+              name="addMyDayTasks"
+              id="addMyDayTask"
+              placeholder="Add task"
+            />
+          </button>
         </div>
       </div>
       <div class="dashboard-content-nav" id="next-seven-days-section">

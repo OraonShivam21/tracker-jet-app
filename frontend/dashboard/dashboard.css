@@ -206,3 +206,67 @@ body {
   display: flex;
   gap: 1rem;
 }
+
+.my-day-add-tasks {
+  position: absolute;
+  bottom: 2rem;
+}
+
+#add-my-day-task-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, .6);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1.4rem;
+  padding: .4rem 1rem;
+  width: 50vw;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+
+#add-my-day-task-btn input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 1rem;
+  width: 100%;
+}
+
+#my-day-tasks-content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: .8rem;
+  padding: .8rem 0;
+}
+
+.task-card {
+  border: 1px solid rgba(255, 255, 255, .3);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  padding: .4rem .8rem 0;
+}
+
+.task-card label {
+  cursor: pointer;
+  width: 100%;
+}
+
+.task-card-heading {
+  font-size: .7rem;
+  display: flex;
+  align-items: center;
+}
+
+.task-card-heading span:nth-child(1) {
+  font-size: 1rem;
+}
+
+.task-completed {
+  opacity: .7;
+  text-decoration: line-through;
+}
