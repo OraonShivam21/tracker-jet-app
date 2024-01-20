@@ -214,16 +214,16 @@ body {
 
 #add-my-day-task-btn {
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, .6);
+  border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: 8px;
   color: #fff;
   font-size: 1.4rem;
-  padding: .4rem 1rem;
+  padding: 0.4rem 1rem;
   width: 50vw;
   text-align: left;
   display: flex;
   align-items: center;
-  gap: .6rem;
+  gap: 0.6rem;
 }
 
 #add-my-day-task-btn input {
@@ -238,17 +238,17 @@ body {
 #my-day-tasks-content {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: .8rem;
-  padding: .8rem 0;
+  gap: 0.8rem;
+  padding: 0.8rem 0;
 }
 
 .task-card {
-  border: 1px solid rgba(255, 255, 255, .3);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 8px;
   display: flex;
   align-items: center;
-  gap: .8rem;
-  padding: .4rem .8rem 0;
+  gap: 0.8rem;
+  padding: 0.4rem 0.8rem 0;
 }
 
 .task-card label {
@@ -257,7 +257,7 @@ body {
 }
 
 .task-card-heading {
-  font-size: .7rem;
+  font-size: 0.7rem;
   display: flex;
   align-items: center;
 }
@@ -267,6 +267,28 @@ body {
 }
 
 .task-completed {
-  opacity: .7;
+  opacity: 0.7;
   text-decoration: line-through;
+}
+
+.dashboard-content-nav {
+  color: rgba(255, 255, 255, 0.9);
+  padding: 2rem 3rem;
+  height: 100%;
+  width: 82vw;
+}
+
+.all-my-tasks-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.all-my-tasks-heading-left,
+.all-my-tasks-heading-right {
+  background-color: rgba(0, 0, 0, 0.9);
+  border-radius: 8px;
+  display: flex;
+  gap: 0.8rem;
+  padding: 0.8rem 2rem 0.6rem;
 }

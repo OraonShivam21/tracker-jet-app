@@ -91,6 +91,9 @@ function fetchAndShowMyDayTask() {
     .then((data) => {
       if (data.error) throw data.error;
       console.log(data.tasks);
+      document.getElementById("my-day-badge").innerText = data.tasks.length;
+      document.getElementById("all-tasks-badge").innerText = data.tasks.length;
+      document.getElementById("calender-badge").innerText = data.tasks.length;
       renderMyDayTasks(data.tasks);
     })
     .catch((error) => {
@@ -112,7 +115,22 @@ function renderMyDayTasks(tasks) {
   const checkedTasks = document.getElementsByClassName("task-card-checkbox");
   for (let i = 0; i < checkedTasks.length; i++) {
     checkedTasks[i].addEventListener("click", (e) => {
+      console.log(e.target.id);
       taskCards[i].classList.toggle("task-completed");
+      fetch(`http://localhost:3000/tasks/update/${e.target.id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify({ status: true }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data.msg);
+          fetchAndShowMyDayTask();
+        })
+        .catch((error) => console.error(error));
     });
   }
 }
@@ -121,11 +139,14 @@ function createMyDayTaskCard(task) {
   const taskCard = document.createElement("div");
   taskCard.setAttribute("class", "task-card");
 
+  if (task.status) taskCard.classList.add("task-completed");
+
   const input = document.createElement("input");
   input.setAttribute("type", "checkbox");
   input.setAttribute("name", "task-card-checkbox");
   input.setAttribute("class", "task-card-checkbox");
   input.setAttribute("id", task._id);
+  if (task.status) input.checked = true;
   taskCard.appendChild(input);
 
   const label = document.createElement("label");
