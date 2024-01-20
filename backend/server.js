@@ -6,6 +6,8 @@ require("dotenv").config();
 
 const {userRouter} = require("./routes/user.route")
 const {feedbackRoute} = require("./routes/feedback.route")
+const {questionRouter}=require('./routes/question.route')
+const {answerRouter}= require("./routes/answer.route")
 const cors = require("cors");
 const app = express();
 const port = process.env.PORT || 3000;
@@ -16,6 +18,8 @@ app.use("/user",userRouter);
 app.use("/quote", quoteRouter)
 app.use("/tasks", taskRoute);
 app.use("/feedback",feedbackRoute)
+app.use('/answers',answerRouter);
+ app.use('/questions',questionRouter);
 app.get("/", (req, res) => {
   res.status(200).json({ message: "Welcome to TrackerJet API" });
 });

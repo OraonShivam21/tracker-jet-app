@@ -11,12 +11,15 @@ const auth = async (req, res, next) => {
     });
     if (blacklistedToken) throw "Unauthorized: You're not authorized";
 
+    const access_token=token
     const decoded = jwt.verify(access_token, process.env.accessSecret);
     if (!decoded) throw "Unauthorized: You're not authorized";
     req.body.userID = decoded.userId;
     req.body.user = decoded.user;
+    req.body.username=decoded.username;
     next();
   } catch (error) {
+    console.log(error)
     res.status(400).json({ error });
   }
 };
