@@ -50,9 +50,11 @@ function menuItemClicked(menuItem, dashboardContentID) {
   }
   document.getElementById(dashboardContentID).classList.add("active");
 
-  if (dashboardContentID === "personal-list-section") fetchAndShowPersonalTask();
+  if (dashboardContentID === "personal-list-section")
+    fetchAndShowPersonalTask();
   else if (dashboardContentID === "work-list-section") fetchAndShowWorkTask();
-  else if (dashboardContentID === "assignment-list-section") fetchAndShowAssignmentTask();
+  else if (dashboardContentID === "assignment-list-section")
+    fetchAndShowAssignmentTask();
   else fetchAndShowMyDayTask();
 }
 
@@ -142,17 +144,15 @@ function fetchAndShowMyDayTask() {
     .then((data) => {
       if (data.error) throw data.error;
       console.log(data.tasks);
-      document.getElementById("my-day-badge").innerText = data.tasks.length;
-      document.getElementById("all-tasks-badge").innerText = data.tasks.length;
-      document.getElementById("calender-badge").innerText = data.tasks.length;
+      const totalTasks = data.tasks.length;
+      console.log(totalTasks);
+      document.getElementById("my-day-badge").innerText = totalTasks;
+      document.getElementById("all-tasks-badge").innerText = totalTasks;
+      document.getElementById("calender-badge").innerText = totalTasks;
       renderMyDayTasks(data.tasks, 1);
     })
     .catch((error) => {
       console.log(error);
-      myDayTasksContent.style.position = "absolute";
-      myDayTasksContent.style.bottom = "6rem";
-      myDayTasksContent.style.opacity = ".7";
-      myDayTasksContent.innerText = error;
     });
 }
 
@@ -175,10 +175,6 @@ function fetchAndShowPersonalTask() {
     })
     .catch((error) => {
       console.log(error);
-      myDayTasksContent.style.position = "absolute";
-      myDayTasksContent.style.bottom = "6rem";
-      myDayTasksContent.style.opacity = ".7";
-      myDayTasksContent.innerText = error;
     });
 }
 
@@ -201,10 +197,6 @@ function fetchAndShowWorkTask() {
     })
     .catch((error) => {
       console.log(error);
-      myDayTasksContent.style.position = "absolute";
-      myDayTasksContent.style.bottom = "6rem";
-      myDayTasksContent.style.opacity = ".7";
-      myDayTasksContent.innerText = error;
     });
 }
 
@@ -227,10 +219,6 @@ function fetchAndShowAssignmentTask() {
     })
     .catch((error) => {
       console.log(error);
-      myDayTasksContent.style.position = "absolute";
-      myDayTasksContent.style.bottom = "6rem";
-      myDayTasksContent.style.opacity = ".7";
-      myDayTasksContent.innerText = error;
     });
 }
 
@@ -244,9 +232,11 @@ function renderMyDayTasks(tasks, num) {
     if (num === 1) {
       myDayTasksContent.appendChild(createMyDayTaskCard(task));
       allMyTasksContent.appendChild(createMyDayTaskCard(task));
-    } else if (num === 2) personalTasksContent.appendChild(createMyDayTaskCard(task));
+    } else if (num === 2)
+      personalTasksContent.appendChild(createMyDayTaskCard(task));
     else if (num === 3) workTasksContent.appendChild(createMyDayTaskCard(task));
-    else if (num === 4) assignmentTasksContent.appendChild(createMyDayTaskCard(task));
+    else if (num === 4)
+      assignmentTasksContent.appendChild(createMyDayTaskCard(task));
   });
 
   const taskCards = document.getElementsByClassName("task-card");
