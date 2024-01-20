@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@3.10.2/dist/fullcalendar.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.10.2/dist/fullcalendar.min.js"></script>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(to bottom, #e0dddd, rgb(46, 236, 224));
+        color: #f9f7f7; 
+    }
+
+    #calendar {
+        max-width: 650px;
+        margin: 50px auto;
+        background-color: #4e4d4d; /* Slightly lighter background for the calendar */
+        border-radius: 10px;
+        padding: 20px;
+        border: 2px solid black;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .fc-day-number {
+        color: #0e0d0d; /* Text color for day number */
+        border: 1px solid #000; /* Dark border for day */
+        border-radius: 50%; /* Make the day number circle */
+        padding: 5px;
+        background-color: #fafefe; /* Dark background for day */
+    }
+
+    .fc-day {
+        border: 1px solid #f9f4f4; /* Dark outline for each grid box */
+    }
+
+    .fc-day-grid-container {
+        border: 2px solid #000; /* Dark outline for the entire calendar */
+        border-radius: 10px; /* Border radius for the entire calendar */
+        overflow: hidden; /* Hide overflow to prevent double borders */
+    }
+    .hh{
+        color: #000;
+        margin-left: 25%;
+    }
+    #taskForm {
+        display: none;
+        position: fixed;
+        top: 10%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+    .dbtn{
+       padding: 10px 30px;
+         color: #0e0e0e;
+        background-color: rgb(9, 170, 181);
+        /* margin-top: 5%;
+        /* margin-left: 1%; */
+        border-radius: 20px;
+
+    }
+
+</style>
+
+<body>
+    <button class="dbtn"><a>Back to dashboard</a></button>
+    <h2 class="hh">🚀 Master Your Schedule: Add Tasks to Your Calendar 📅</h2>
+    <div id="calendar"></div>
+      <div id="taskForm">
+        <label for="task">Task:</label>
+        <input type="text" id="task" placeholder="Enter task">
+        <button onclick="addTask()">Add Task</button>
+    </div>
+    <script src="./script.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#calendar').fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay'
+                },
+                editable: true, // Allow events to be edited
+                eventLimit: true, // Allow "more" link when too many events,
+                selectable: true,
+                select: function (start, end) {
+                    // Callback when user selects a date range
+                    addTask(start, end);
+                    $('#calendar').fullCalendar('unselect');
+                },
+                events: [
+                    {
+                        title: 'Study Session',
+                        start: '2024-01-20T10:00:00',
+                        end: '2024-01-20T12:00:00'
+                    },
+                    // Add more events as needed
+                ]
+            });
+        });
+
+        function addTask(start, end) {
+            // Prompt the user for task details (you can use a modal or any UI component)
+           document.getElementById("taskForm").style.display = "block";
+            let task = document.getElementById("task").value;
+            if (task) {
+                // Add the task to the events array
+                $('#calendar').fullCalendar('renderEvent', {
+                    title: task,
+                    start: start,
+                    end: end
+                }, true);
+            }
+        }
+    </script>
+</body>
+</html>
