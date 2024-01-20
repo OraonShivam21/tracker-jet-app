@@ -104,9 +104,17 @@ function fetchAndShowMyDayTask() {
 
 function renderMyDayTasks(tasks) {
   myDayTasksContent.innerHTML = null;
-  tasks.forEach(task => {
+  tasks.forEach((task) => {
     myDayTasksContent.appendChild(createMyDayTaskCard(task));
   });
+
+  const taskCards = document.getElementsByClassName("task-card");
+  const checkedTasks = document.getElementsByClassName("task-card-checkbox");
+  for (let i = 0; i < checkedTasks.length; i++) {
+    checkedTasks[i].addEventListener("click", (e) => {
+      taskCards[i].classList.toggle("task-completed");
+    });
+  }
 }
 
 function createMyDayTaskCard(task) {
@@ -125,7 +133,7 @@ function createMyDayTaskCard(task) {
   const taskCardHeading = document.createElement("div");
   taskCardHeading.setAttribute("class", "task-card-heading");
   taskCardHeading.innerText = "My-Task";
-  
+
   const spanMaterial = document.createElement("span");
   spanMaterial.setAttribute("class", "material-symbols-outlined");
   spanMaterial.innerText = " chevron_right ";

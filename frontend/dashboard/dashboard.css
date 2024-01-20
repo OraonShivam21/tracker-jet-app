@@ -251,6 +251,11 @@ body {
   padding: .4rem .8rem 0;
 }
 
+.task-card label {
+  cursor: pointer;
+  width: 100%;
+}
+
 .task-card-heading {
   font-size: .7rem;
   display: flex;
