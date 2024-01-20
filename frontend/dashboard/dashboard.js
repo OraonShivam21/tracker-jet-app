@@ -30,8 +30,8 @@ window.addEventListener("load", (e) => {
     headingUsername.style.textTransform = "capitalize";
   }
 
-  menuItems[0].classList.add("active");
-  dashboardContentNavs[0].classList.add("active");
+  menuItems[1].classList.add("active");
+  dashboardContentNavs[1].classList.add("active");
 
   fetchAndShowMyDayTask();
 });

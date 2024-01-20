@@ -7,7 +7,6 @@ const taskRoute = express.Router();
 taskRoute.use(auth);
 
 taskRoute.get("/", async (req, res) => {
-  console.log("clicked to get tasks");
   try {
     const tasks = await TaskModel.find({ userID: req.body.userID });
     if (tasks.length === 0) throw "Please create some tasks first";
@@ -19,7 +18,6 @@ taskRoute.get("/", async (req, res) => {
 
 taskRoute.post("/add", async (req, res) => {
   const payload = req.body;
-  console.log(req.body);
   if (req.query.category) payload.category = req.query.category;
   try {
     const task = new TaskModel(payload);
