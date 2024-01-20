@@ -30,8 +30,8 @@ window.addEventListener("load", (e) => {
     headingUsername.style.textTransform = "capitalize";
   }
 
-  menuItems[0].classList.add("active");
-  dashboardContentNavs[0].classList.add("active");
+  menuItems[1].classList.add("active");
+  dashboardContentNavs[1].classList.add("active");
 
   fetchAndShowMyDayTask();
 });
@@ -42,22 +42,31 @@ function menuItemClicked(menuItem, dashboardContentID) {
   }
   menuItem.classList.add("active");
 
+  if(dashboardContentID === "discussionForum") location.replace("../discussion/dashboard.html");
+
   for (var i = 0; i < dashboardContentNavs.length; i++) {
     dashboardContentNavs[i].classList.remove("active");
   }
   document.getElementById(dashboardContentID).classList.add("active");
+  fetchAndShowMyDayTask();
 }
 
 const addMyDayTaskBtn = document.getElementById("add-my-day-task-btn");
 const addMyDayTask = document.getElementById("addMyDayTask");
+const addAllMyTaskBtn = document.getElementById("add-all-my-task-btn");
+const addAllMyTask = document.getElementById("addAllMyTask");
 
 addMyDayTask.addEventListener("keydown", (e) => {
-  if (e.key === "Enter") addMyDayNewTask();
+  if (e.key === "Enter") addMyDayNewTask(1);
 });
 
-function addMyDayNewTask() {
+addAllMyTask.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") addMyDayNewTask(2);
+});
+
+function addMyDayNewTask(num) {
   const taskAddURL = "http://localhost:3000/tasks/add";
-  const title = addMyDayTask.value;
+  const title = num === 1 ? addMyDayTask.value : addAllMyTask.value;
   fetch(taskAddURL, {
     method: "POST",
     headers: {
@@ -76,6 +85,7 @@ function addMyDayNewTask() {
 }
 
 const myDayTasksContent = document.getElementById("my-day-tasks-content");
+const allMyTasksContent = document.getElementById("all-my-tasks-content");
 
 function fetchAndShowMyDayTask() {
   const getTasksURL = "http://localhost:3000/tasks";
@@ -91,6 +101,9 @@ function fetchAndShowMyDayTask() {
     .then((data) => {
       if (data.error) throw data.error;
       console.log(data.tasks);
+      document.getElementById("my-day-badge").innerText = data.tasks.length;
+      document.getElementById("all-tasks-badge").innerText = data.tasks.length;
+      document.getElementById("calender-badge").innerText = data.tasks.length;
       renderMyDayTasks(data.tasks);
     })
     .catch((error) => {
@@ -104,15 +117,32 @@ function fetchAndShowMyDayTask() {
 
 function renderMyDayTasks(tasks) {
   myDayTasksContent.innerHTML = null;
+  allMyTasksContent.innerHTML = null;
   tasks.forEach((task) => {
     myDayTasksContent.appendChild(createMyDayTaskCard(task));
+    allMyTasksContent.appendChild(createMyDayTaskCard(task));
   });
 
   const taskCards = document.getElementsByClassName("task-card");
   const checkedTasks = document.getElementsByClassName("task-card-checkbox");
   for (let i = 0; i < checkedTasks.length; i++) {
     checkedTasks[i].addEventListener("click", (e) => {
+      console.log(e.target.id);
       taskCards[i].classList.toggle("task-completed");
+      fetch(`http://localhost:3000/tasks/update/${e.target.id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify({ status: true }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data.msg);
+          fetchAndShowMyDayTask();
+        })
+        .catch((error) => console.error(error));
     });
   }
 }
@@ -121,11 +151,14 @@ function createMyDayTaskCard(task) {
   const taskCard = document.createElement("div");
   taskCard.setAttribute("class", "task-card");
 
+  if (task.status) taskCard.classList.add("task-completed");
+
   const input = document.createElement("input");
   input.setAttribute("type", "checkbox");
   input.setAttribute("name", "task-card-checkbox");
   input.setAttribute("class", "task-card-checkbox");
   input.setAttribute("id", task._id);
+  if (task.status) input.checked = true;
   taskCard.appendChild(input);
 
   const label = document.createElement("label");
