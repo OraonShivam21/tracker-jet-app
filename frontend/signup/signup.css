@@ -233,3 +233,42 @@ margin: 5px 0;
   border: 1px solid;
   border-radius: 50%;
 }
+@media (max-width: 768px) {
+  .rform {
+      padding: 0 20px; /* Adjust the padding for smaller screens */
+  }
+
+  .rinpu,
+  .rinput {
+      width: 100%;
+  }
+
+  .ra,
+  .rbutton,
+  .rbutton1 {
+      padding: 10px 25px;
+  }
+
+  .rcontainer,
+  .rbody {
+      margin: 2%;
+  }
+}
+
+@media (max-width: 576px) {
+  .rinput,
+  .rinpu {
+      width: 100%;
+      margin: 5px 0;
+  }
+
+  .rbutton,
+  .rbutton1 {
+      width: 100%;
+  }
+
+  .rcontainer,
+  .rbody {
+      margin: 0;
+  }
+}
