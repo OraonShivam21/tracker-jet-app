@@ -64,7 +64,7 @@ function addMyDayNewTask() {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({ title }),
+    body: JSON.stringify({ title, status: false }),
   })
     .then((res) => res.json())
     .then((data) => {
@@ -90,6 +90,7 @@ function fetchAndShowMyDayTask() {
     .then((res) => res.json())
     .then((data) => {
       if (data.error) throw data.error;
+      console.log(data.tasks);
       renderMyDayTasks(data.tasks);
     })
     .catch((error) => {
@@ -109,7 +110,41 @@ function renderMyDayTasks(tasks) {
 }
 
 function createMyDayTaskCard(task) {
+  const taskCard = document.createElement("div");
+  taskCard.setAttribute("class", "task-card");
+
+  const input = document.createElement("input");
+  input.setAttribute("type", "checkbox");
+  input.setAttribute("name", "task-card-checkbox");
+  input.setAttribute("class", "task-card-checkbox");
+  input.setAttribute("id", task._id);
+  taskCard.appendChild(input);
+
+  const label = document.createElement("label");
+  label.setAttribute("for", task._id);
+  const taskCardHeading = document.createElement("div");
+  taskCardHeading.setAttribute("class", "task-card-heading");
+  taskCardHeading.innerText = "My-Task";
   
+  const spanMaterial = document.createElement("span");
+  spanMaterial.setAttribute("class", "material-symbols-outlined");
+  spanMaterial.innerText = " chevron_right ";
+  taskCardHeading.appendChild(spanMaterial);
+
+  const spanCategory = document.createElement("span");
+  spanCategory.innerText = task.category;
+  taskCardHeading.appendChild(spanCategory);
+
+  label.appendChild(taskCardHeading);
+
+  const h5Title = document.createElement("h5");
+  h5Title.setAttribute("class", "title");
+  h5Title.innerText = task.title;
+  label.appendChild(h5Title);
+
+  taskCard.appendChild(label);
+
+  return taskCard;
 }
 
 const logoutButton = document.getElementById("logoutBTN");
