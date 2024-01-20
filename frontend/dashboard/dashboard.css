@@ -206,3 +206,28 @@ body {
   display: flex;
   gap: 1rem;
 }
+
+.my-day-add-tasks {
+  position: absolute;
+  bottom: 2rem;
+}
+
+#add-task {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, .6);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1.4rem;
+  padding: .4rem 1rem;
+  width: 50vw;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+
+#add-task input {
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+}

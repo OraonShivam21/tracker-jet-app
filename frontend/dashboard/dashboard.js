@@ -4,10 +4,25 @@ const dashboardContentNavs = document.getElementsByClassName(
 );
 
 window.addEventListener("load", (e) => {
+  const timeNow = new Date().getHours();
+  const greeting = document.getElementById("greeting");
+
+  if(timeNow >= 0 && timeNow < 12) {
+    greeting.innerText = "Good Morning";
+  } else if(timeNow >= 12 && timeNow < 20) {
+    greeting.innerText = "Good Evening";
+  } else {
+    greeting.innerText = "Good Night";
+  }
+
   const username = localStorage.getItem("name");
+  const sidebarUsername = document.getElementById("username");
+  const headingUsername = document.getElementById("heading-username");
   if (username) {
-    document.getElementById("username").innerText = username;
-    document.getElementById("username").style.textDecoration = "uppercase";
+    sidebarUsername.innerText = username;
+    sidebarUsername.style.textTransform = "capitalize";
+    headingUsername.innerText = username;
+    headingUsername.style.textTransform = "capitalize";
   }
 
   menuItems[0].classList.add("active");
@@ -24,6 +39,11 @@ function menuItemClicked(menuItem, dashboardContentID) {
     dashboardContentNavs[i].classList.remove("active");
   }
   document.getElementById(dashboardContentID).classList.add("active");
+}
+
+function addMyDayNewTask() {
+  const taskAddURL = "http://localhost:3000/tasks/add";
+  
 }
 
 const logoutButton = document.getElementById("logoutBTN");
