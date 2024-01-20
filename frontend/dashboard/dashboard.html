@@ -88,10 +88,7 @@
         <span id="shopping" class="menu-text">Assignment</span>
         <span class="badge" id="assignment-badge">3</span>
       </div>
-      <div
-        class="menu-item"
-        onclick="menuItemClicked(this, 'discussionForum')"
-      >
+      <div class="menu-item" onclick="menuItemClicked(this, 'discussionForum')">
         <i class="material-symbols-outlined"> group </i>
         <span id="discussionForum" class="menu-text">Discussion</span>
       </div>
@@ -171,6 +168,20 @@
             </span>
             <span class="material-symbols-outlined"> search </span>
           </div>
+        </div>
+        <div id="all-my-tasks-content">
+          <!-- show all tasks here -->
+        </div>
+        <div class="my-day-add-tasks">
+          <button id="add-all-my-task-btn">
+            +
+            <input
+              type="text"
+              name="addMyDayTasks"
+              id="addAllMyTask"
+              placeholder="Add task"
+            />
+          </button>
         </div>
       </div>
       <div class="dashboard-content-nav" id="my-calender-section">
