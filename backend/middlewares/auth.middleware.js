@@ -2,12 +2,12 @@ const jwt = require("jsonwebtoken");
 const { BlacklistModel } = require("../models/blacklist.model");
 
 const auth = async (req, res, next) => {
-  const access_token = req.headers.authorization?.split(" ")[1];
+  const token = req.headers.authorization?.split(" ")[1];
   try {
-    if (!access_token) throw "Access token missing";
+    if (!token) throw "Access token missing";
 
     const blacklistedToken = await BlacklistModel.findOne({
-      token: access_token,
+      token: token,
     });
     if (blacklistedToken) throw "Unauthorized: You're not authorized";
 
