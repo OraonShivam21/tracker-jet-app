@@ -1,76 +1,197 @@
-body{
-  background-color: rgb(242, 242, 205);
+body {
+  /* background-color: rgb(242, 242, 205); */
+  background-image: url(https://img.freepik.com/premium-photo/colorful-textbooks-pencils-blue-background-concept-education-training-workspace-copy-space_709963-1380.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/* hhhhhhhhhhhhhh */
+#myModal {
+  /* display: none; */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: #fefefe;
+  border: 2px solid #2a2929;
+  width: 70%;
+  border-radius: 10px;
+  max-width: 500px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1;
 }
 
-#question-container{
-  background-color: white;
-    font-family: 'Arial', sans-serif;
-    margin-left: 170px;
-    width: 1200px;
-    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
-    border-radius: 8px;
-    padding: 8px;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
+.close {
+  color: #df1010;
+  float: right;
+  font-size: 30px;
+  font-weight: bold;
 }
 
-#username{display: flex;
-    justify-content: space-between;
-    color: rgba(15, 15, 25, 0.7);
-    font-size: small;
-    margin-bottom: 10px;
-    font-family: 'Lobster', cursive;
-    }
-
-#card{
-    font-family: 'Arial', sans-serif;
-    margin-left: 170px;
-    width: 1200px;
-    border: 2px solid black;
-    padding: 8px;
-    display: flex;
-    flex-direction: column;
-    background-color: white;
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
 
-#answer, #delete-btn{
-    margin-top: 20px;
-    width: 100px;
-    padding: 8px;
-    border: none;
-    background-color: #21104f;
-    color: #fff;
-    border-radius: 20px;
-    cursor: pointer;
+/* Textarea Styles */
+#answerTextarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  box-sizing: border-box;
+  border: 1px solid #0f0e0e;
+  border-radius: 5px;
+  resize: none;
+}
+
+/* Button Styles */
+button {
+  background-color: #0088cc;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* Center the modal on smaller screens */
+@media only screen and (max-width: 600px) {
+  #myModal {
+    width: 90%;
   }
-  
-  #answer:hover, #delete-btn:hover{
+}
+/* hhhhhhhhhhhh */
+
+#question-container {
+  background-color: rgb(238, 236, 236);
+  font-family: 'Arial', sans-serif;
+  margin-left: 11%;
+  width: 60%;
+  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+  border-radius: 23px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.head1 {
+  color: #21104f;
+  font-size: 2.2rem;
+  font-family: sans-serif;
+  margin-left: 29%;
+}
+
+#username {
+  display: flex;
+  justify-content: space-between;
+  color: rgba(15, 15, 25, 0.7);
+  font-size: small;
+  margin-bottom: 10px;
+  font-family: 'Lobster', cursive;
+}
+
+#card {
+  font-family: 'Arial', sans-serif;
+  margin-left: 11%;
+  margin-top: 10px;
+  width: 60%;
+  border: 2px solid black;
+  border-radius: 30px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(243, 240, 240);
+}
+
+.backp {
+  display: inline-block;
+  margin-top: 20px;
+  margin-left: 20px;
+  padding: 7px 20px;
+  background-color: #0088cc;
+  color: white;
+  border-radius: 5px;
+}
+
+.backp a {
+  text-decoration: none;
+  color: #fdf9f9;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+.backp a:hover {
+  background-color: #49a0cc; /* Adjust the hover color */
+}
+
+#answer,
+#delete-btn {
+  margin-top: 20px;
+  width: 100px;
+  padding: 8px;
+  border: none;
+  background-color: #21104f;
+  color: #fff;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+#answer:hover,
+#delete-btn:hover {
   background-color: rgb(90, 8, 8);
   transform: scale(1.05);
+}
+
+/* votes */
+
+#votes {
+  display: flex;
+  align-items: end;
+}
+
+#vote-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+#upvote-icon,
+#downvote-icon {
+  width: 30px;
+}
+
+#upvote-icon:hover,
+#downvote-icon:hover {
+  transform: scale(1.1);
+}
+
+#upvote {
+  margin-bottom: 8px;
+}
+
+/* Responsive Styles */
+@media only screen and (max-width: 768px) {
+  #question-container {
+    width: 80%;
+    margin-left: 5%;
   }
 
-
-
-  /* votes */
-
-  #votes{
-    display: flex;
-    align-items: end;
-  }
-  #vote-container{
-    display: flex;
-    justify-content: space-between;
+  .head1 {
+    margin-left: 5%;
   }
 
-  #upvote-icon,#downvote-icon {
-    width: 30px; 
+  #card {
+    width: 80%;
+    margin-left: 5%;
   }
   
-  #upvote-icon:hover, #downvote-icon:hover{
-    transform: scale(1.1);
-  }
-
-  #upvote{
-    margin-bottom: 8px;
-  }
+}
