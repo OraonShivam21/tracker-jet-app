@@ -1,16 +1,20 @@
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  /* background-color: #121212; */
   color: #ffffff;
-  /* margin: 0px; */
-  /* padding: 0;  */
-  /* border: 1px solid red; */
   background-image: url("../assets/blank-blue-halftone-background_53876-114466.avif");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  /* background-color: #1f3a39; */
   display: flex;
+}
+
+.sidebar {
+  width: 15rem;
+  background-color: #181818;
+  overflow-y: scroll;
+}
+.headingP {
+  margin-left: 20%;
 }
 ::-webkit-scrollbar {
   display: none;
@@ -360,4 +364,187 @@ body {
   background-color: rgba(0, 0, 0, 0.9);
   border-radius: 8px;
   padding: 2rem;
+}
+
+
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Adjust the alpha value for the desired transparency */
+  z-index: 999;
+}
+
+#simpleTimerForm {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #e8eded;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 50px rgba(167, 29, 29, 0.3);
+  z-index: 1000; /* Ensure the form is on top of the overlay */
+}
+
+#timerFormContent {
+  text-align: center;
+  height: 60px;
+  margin-top: 30px;
+  /* height: 40%;
+  width: 30%; */
+  
+}
+
+/* #countdownDisplay {
+  margin-top: 10px;
+  font-size: 18px;
+} */
+
+#countdownDisplay {
+  font-size: 27px;
+  margin-bottom: -5px;
+  font-weight: 600;
+  margin-left: 32%;
+}
+
+#endBnt, #pauseBtn, #playBtn{
+  margin-top: 4px;
+  background-color: #e74c3c; /* Red color for STOP button */
+  color: #fff;
+  padding: 1px 10px; 
+  border: none;
+  border-radius: 5px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+#pauseBtn {
+  background-color: #3498db; /* Blue color for PAUSE button */
+}
+/* Add this CSS to your stylesheet or within a style tag in your HTML */
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  /* background-color: white; */
+  padding: 20px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.5);
+  /* z-index: 9999; */
+}
+.toggleee{
+  height: 20px;
+  width: 20px;
+}
+#resetBtn{
+  padding: 10px 30px;
+  background-color: #0078d7;
+  color: #fff;
+  border-radius: 40px;
+}
+
+/* .blur {
+  filter: blur(5px);
+} */
+
+#timesUpContent {
+  text-align: center;
+}
+
+#timesUpContent img {
+  max-width: 80%;
+  height: auto;
+  margin-bottom: 10px;
+  backdrop-filter: none; 
+  /* z-index: 1; */
+}
+/* .popup.blur {
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(5px); 
+} */
+
+@media only screen and (max-width: 1200px) {
+  .sidebar {
+    width: 100%;
+  }
+
+  .headingP {
+    margin-left: 10%;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .sidebar {
+    width: 100%;
+  }
+
+  .headingP {
+    margin-left: 5%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+  }
+
+  .headingP {
+    margin-left: 5%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .headingP {
+    margin-left: 2%;
+  }
+  
+  .sidebar {
+    display: none;
+  }
+
+  .sidebar-toggle {
+    display: block;
+    cursor: pointer;
+    color: #fff;
+    font-size: 24px;
+    margin-left: 5px;
+  }
+
+  .sidebar-toggle.active {
+    display: none;
+  }
+
+  .sidebar.active {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #181818;
+    z-index: 1000;
+    overflow-y: scroll;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .headingP {
+    margin-left: 2%;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  .headingP {
+    margin-left: 1%;
+  }
 }

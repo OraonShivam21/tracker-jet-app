@@ -290,8 +290,16 @@ function createMyDayTaskCard(task) {
   taskCardHeading.innerText = "My-Task";
 
   const timerBtn = document.createElement("button");
+  // TIMER
   timerBtn.setAttribute("class","timerBtn");
   timerBtn.innerText="Start Timer"
+  timerBtn.addEventListener("click", function () {
+    // Display the timer form
+    showTimerForm();
+  
+    // Add a dim background to focus on the timer form
+    document.querySelector("body").classList.add("dim-background");
+  });
 
   const spanMaterial = document.createElement("span");
   spanMaterial.setAttribute("class", "material-symbols-outlined");
@@ -315,6 +323,30 @@ function createMyDayTaskCard(task) {
   taskCard.appendChild(timerBtn)
   return taskCard;
 }
+
+// ##################3
+// document.addEventListener('DOMContentLoaded', function () {
+//   const overlay2 = document.getElementById('overlay2');
+//   function showOverlay() {
+//     overlay2.style.display = 'flex';
+//   }
+//   function hideOverlay() {
+//     overlay2.style.display = 'none';
+//   }
+//   document.body.addEventListener('click', function (event) {
+//     // Check if the click is outside the pop-up content
+//     if (!event.target.closest('#popupContent')) {
+//       // Hide the overlay when clicking outside the pop-up content
+//       hideOverlay();
+//     }
+//   });
+
+//   // Trigger the overlay on some event (e.g., button click)
+//   // Replace this with your actual trigger event
+//   document.getElementById('showOverlayBtn').addEventListener('click', showOverlay);
+// });
+
+
 
 const logoutButton = document.getElementById("logoutBTN");
 logoutButton.addEventListener("click", (e) => {
@@ -344,3 +376,143 @@ logoutButton.addEventListener("click", (e) => {
       console.error(error);
     });
 });
+
+function showTimesUpPopup() {
+  // Add a blur class to the body to blur the background
+  document.body.classList.add('blur');
+
+  // Show the "Times Up" popup
+  const timesUpPopup = document.getElementById('timesUpPopup');
+  timesUpPopup.style.display = 'block';
+
+  // Add event listener for the "Reset" button in the popup
+  document.getElementById('resetBtn').addEventListener('click', function () {
+    // Remove the blur class from the body
+    document.body.classList.remove('blur');
+
+    // Hide the "Times Up" popup
+    timesUpPopup.style.display = 'none';
+  });
+}
+function toggleSidebar() {
+  const sidebar = document.querySelector('.sidebar');
+  sidebar.classList.toggle('active');
+}
+
+// Function to start the timer
+function showTimerForm() {
+  // Create a div for the background overlay
+  const overlay = document.createElement("div");
+  overlay.setAttribute("class", "overlay");
+  document.body.appendChild(overlay);
+
+  // Create a simple form
+  const timerForm = document.createElement("div");
+  timerForm.setAttribute("id", "simpleTimerForm");
+  timerForm.innerHTML = `
+    <div id="timerFormContent">
+      <label for="timerDuration">Set Timer (minutes):</label>
+      <input type="number" id="timerDuration" min="1" step="1" required>
+      <button id="startSimpleTimerBtn">Start Timer</button>
+      <div id="countdownDisplay"></div>
+    </div>
+  `;
+
+  // Append the form to the body
+  document.body.appendChild(timerForm);
+
+  // Add an event listener to the "Start Timer" button in the simple form
+  document.getElementById("startSimpleTimerBtn").addEventListener("click", function () {
+    const timerMinutes = document.getElementById("timerDuration").value;
+    // Call the startTimer function with the specified duration
+    startTimer(timerMinutes);
+    timerForm.innerHTML = `
+      <div id="countdownDisplay"></div>
+      <button id="endBnt">STOP</button>
+      <button id="pauseBtn">PAUSE</button>  
+      <button id="playBtn">PLAY</button>
+  `;
+    timerForm.style.top = "0%";
+    timerForm.style.left = "80%";
+    timerForm.style.transform = "scale(0.7)";
+    document.getElementById("endBnt").addEventListener("click", stopTimer);
+    document.getElementById("pauseBtn").addEventListener("click", pauseTimer);
+    document.getElementById("playBtn").addEventListener("click", playTimer);
+    // Remove the simple timer form and background overlay after starting the timer
+    // document.body.removeChild(timerForm);
+    document.body.removeChild(overlay);
+  });
+ 
+}
+let countdownInterval;
+// Function to start the timer
+function startTimer(minutes) {
+  let seconds = minutes * 60;
+
+  // Initial display of the countdown
+  updateCountdownDisplay(seconds);
+
+  // Update the countdown every second
+  countdownInterval = setInterval(function () {
+    seconds--;
+
+    // Update the countdown display
+    // updateCountdownDisplay(seconds);
+
+    // Check if the timer has reached zero
+    if (seconds <= 0) {
+      // Clear the interval to stop the countdown
+      clearInterval(countdownInterval);
+      showTimesUpPopup();
+      // document.getElementById("playBtn").style.display = "inline";
+    }else{
+      updateCountdownDisplay(seconds);
+    }
+  }, 1000);
+ 
+}
+
+function updateCountdownDisplay(seconds) {
+  const countdownDisplay = document.getElementById("countdownDisplay");
+
+  // Check if the element exists before updating
+  if (countdownDisplay) {
+    const minutesDisplay = Math.floor(seconds / 60);
+    const secondsDisplay = seconds % 60;
+
+    countdownDisplay.innerText = `${minutesDisplay}:${secondsDisplay < 10 ? '0' : ''}${secondsDisplay}`;
+  }
+}
+
+function stopTimer() {
+  // Clear the interval to stop the countdown
+  clearInterval(countdownInterval);
+
+  // Additional actions when stopping the timer (if needed)
+  alert("Timer has been stopped!");
+}
+
+function pauseTimer() {
+  // Check if the interval is currently running
+  if (countdownInterval) {
+    // Clear the interval to pause the countdown
+    clearInterval(countdownInterval);
+    countdownInterval = null; // Set the interval variable to null when paused
+
+    // Additional actions when pausing the timer (if needed)
+    alert("Timer has been paused!");
+  } else {
+    // Resume the timer by starting a new interval
+    const currentSeconds = parseInt(document.getElementById("countdownDisplay").innerText.split(":")[1]);
+    startTimer(currentSeconds / 60);
+  }
+}
+
+function playTimer() {
+  // Resume the timer by starting a new interval
+  const currentSeconds = parseInt(document.getElementById("countdownDisplay").innerText.split(":")[1]);
+  startTimer(currentSeconds / 60);
+
+  // Hide the "PLAY" button when the timer is resumed
+  document.getElementById("playBtn").style.display = "none";
+}
