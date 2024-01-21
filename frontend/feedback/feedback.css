@@ -11,8 +11,7 @@ html {
   background-image: url(https://img.freepik.com/premium-photo/blue-background-with-white-stripe-that-says-seagull_896342-19.jpg);
   background-size: cover;
   background-position: center;
-  height: 100%;
-  padding: 10rem 5rem 0;
+  padding: 10rem 5rem 5rem;
 }
 
 .post-feedback {
@@ -44,5 +43,73 @@ input {
   border: none;
   border-radius: 8px;
   color: #fff;
+  font-size: .9rem;
   padding: .6rem;
+}
+
+#show-feedback {
+  display: flex;
+  flex-direction: column;
+  gap: .8rem;
+  padding: 1rem 4rem;
+}
+
+.feedback-card {
+  background-color: rgba(0, 0, 0, .5);
+  border-radius: 1rem;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1rem 0;
+  width: 100%;
+}
+
+.feedback-card-user {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.feedback-card-user-img {
+  background-color: rgb(97, 97, 219);
+  border-radius: 1rem;
+  padding: 1rem;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.feedback-card-content {
+  flex: 7;
+}
+
+.feedback-rating {
+  flex: 1;
+  color: rgb(255, 217, 0);
+  font-size: 1.6rem;
+  text-align: center;
+  width: fit-content;
+}
+
+#show-page-btns {
+  display: flex;
+  justify-content: center;
+  gap: .6rem;
+  margin: 2rem 0;
+}
+
+#show-page-btns button {
+  background-color: rgb(44, 44, 255);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 700;
+  padding: .6rem 0;
+  width: 3rem;
+  text-align: center;
+}
+
+.active-page-btn {
+  background-color: rgb(88, 88, 255);
 }

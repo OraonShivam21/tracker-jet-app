@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <title>Feedback &amp; Rating Page</title>
     <link rel="stylesheet" href="./feedback.css" />
+    <link rel="stylesheet" href="../homepage.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -146,12 +147,72 @@
           id="feedback-body"
           placeholder="Enter feedback body here"
         />
-        <input type="number" name="feedback-rating" id="feedback-rating" placeholder="Rate 1-5">
+        <input
+          type="number"
+          name="feedback-rating"
+          id="feedback-rating"
+          placeholder="Rate 1-5"
+        />
         <button id="feedback-btn">Post Feedback</button>
       </div>
       <div id="show-feedback">
         <!-- show feedbacks here -->
+        <!-- <div class="feedback-card">
+          <div class="feedback-card-user">
+            <p class="feedback-card-user-img">SH</p>
+            <p class="feedback-card-user-name">Shivam</p>
+          </div>
+          <div class="feedback-card-content">
+            <h5 class="feedback-card-title">This is my first feedback</h5>
+            <p class="feedback-card-body">
+              This app is very good to have around and sharing with our friends
+              also.
+            </p>
+          </div>
+          <div class="feedback-rating">5 &star;</div>
+        </div> -->
       </div>
+      <div id="show-page-btns">
+        <!-- show pagination buttons here -->
+        <!-- <button>1</button>
+        <button>2</button> -->
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>About Us</h3>
+          <p>
+            Unlock your potential and manage your classes, tasks and exams with
+            TrackerJet- the world's #1 student planner and school organizer app.
+            Your all-in-one study tracking solution.
+          </p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Connect with Us</h3>
+          <div class="footer-social">
+            <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <div class="lastone">
+      <p>
+        &copy; 2024 TrackerJet <span style="color: red">&#10084;</span> All
+        rights reserved.
+      </p>
     </div>
   </body>
   <script src="./feedback.js"></script>
