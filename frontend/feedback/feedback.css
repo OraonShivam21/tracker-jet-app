@@ -1,93 +1,157 @@
 /* General styles */
-body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.background-image {
+  background-image: url(https://img.freepik.com/premium-photo/blue-background-with-white-stripe-that-says-seagull_896342-19.jpg);
+  background-size: cover;
+  background-position: center;
+  padding: 10rem 5rem 5rem;
+}
+
+.post-feedback {
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem 2rem;
+  padding: 2rem;
+}
+
+input {
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 0.8rem;
+}
+
+#feedback-body {
+  width: 55%;
+}
+
+#feedback-rating {
+  width: 20%;
+}
+
+#feedback-btn {
+  background-color: rgb(66, 66, 148);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 0.9rem;
+  padding: 0.6rem;
+}
+
+#show-feedback {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding: 1rem 4rem;
+}
+
+.feedback-card {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 1rem;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1rem 0;
+  width: 100%;
+}
+
+.feedback-card-user {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.feedback-card-user-img {
+  background-color: rgb(97, 97, 219);
+  border-radius: 1rem;
+  padding: 1rem;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.feedback-card-content {
+  flex: 7;
+}
+
+.feedback-rating {
+  flex: 1;
+  color: rgb(255, 217, 0);
+  font-size: 1.6rem;
+  text-align: center;
+  width: fit-content;
+}
+
+#show-page-btns {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  margin: 2rem 0;
+}
+
+#show-page-btns button {
+  background-color: rgb(44, 44, 255);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 700;
+  padding: 0.6rem 0;
+  width: 3rem;
+  text-align: center;
+}
+
+.active-page-btn {
+  background-color: rgb(88, 88, 255);
+}
+
+@media (max-width: 900px) {
   .background-image {
-    background-image: url(https://img.freepik.com/premium-photo/blue-background-with-white-stripe-that-says-seagull_896342-19.jpg);
-    background-size: cover;
-    background-position: center;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
+    padding: 2rem 1rem;
   }
-  
-  .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
+  .post-feedback {
+    flex-direction: column;
+  }
+  #feedback-title,
+  #feedback-body,
+  #feedback-btn {
     width: 100%;
-    height: 100%;
-    background-color: rgba(121, 117, 117, 0.6); 
   }
-  
-  .container {
-    z-index: 1;
-    position: relative;
-    width: 80%;
-    max-width: 500px;
-    text-align: center;
-    color: #fff;
+  #feedback-rating  {
+    width: 50%;
   }
-  
-  /* Styles specific to the rating section */
-  .rating h2 {
-    margin-bottom: 20px;
-    font-size: 32px;
+  .feedback-card {
+    gap: .8rem;
   }
-  
-  .stars {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
+  .feedback-card-user {
+    font-size: .8rem;
   }
-  
-  
-  
-  .stars label {
-    font-size: 40px;
-    cursor: pointer;
-    color: #ccc;
-    transition: color 0.3s ease;
-    display: block;
-    margin-bottom: 8px;
+  .feedback-card-title {
+    font-size: 1rem;
   }
-  
-  .stars label:hover,
-  .stars label:hover ~ label,
-  .stars input:checked ~ label {
-    color: #FFD700; /* Yellow color for selected stars */
+  .feedback-card-body {
+    font-size: .8rem;
   }
-  
-  .feedback textarea {
-    width: 100%;
-    height: 100px;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    resize: none;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin-bottom: 20px;
+  .feedback-rating {
+    font-size: 1.2rem;
   }
-  
-  .submit-btn {
-    padding: 12px 24px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    display: block;
-    margin: 0 auto 20px;
+}
+
+@media (max-width: 600px) {
+  .feedback-card-user {
+    align-self: flex-start;
+    font-size: .6rem;
   }
-  
-  .submit-btn:hover {
-    background-color: #1d7a7e;
+  .feedback-rating {
+    font-size: .8rem;
   }
-  
+}
