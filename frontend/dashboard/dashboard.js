@@ -119,6 +119,7 @@ function addMyDayNewTask(num) {
     .then((data) => {
       if (data.error) throw data.error;
       console.log(data.msg);
+      
       if (num === 1 || num === 2) fetchAndShowMyDayTask();
       else if (num === 3) fetchAndShowPersonalTask();
       else if (num === 4) fetchAndShowWorkTask();
@@ -151,6 +152,7 @@ function fetchAndShowMyDayTask() {
       console.log(data.tasks);
       const totalTasks = data.tasks.length;
       console.log(totalTasks);
+      localStorage.setItem("tasks",totalTasks)
       document.getElementById("my-day-badge").innerText = totalTasks;
       document.getElementById("all-tasks-badge").innerText = totalTasks;
       document.getElementById("calender-badge").innerText = totalTasks;
@@ -219,6 +221,7 @@ function fetchAndShowAssignmentTask() {
     .then((data) => {
       if (data.error) throw data.error;
       console.log(data.tasks);
+      localStorage.setItem("task",data.tasks);
       document.getElementById("assignment-badge").innerText = data.tasks.length;
       renderMyDayTasks(data.tasks, 4);
     })
@@ -518,3 +521,10 @@ function playTimer() {
   // Hide the "PLAY" button when the timer is resumed
   document.getElementById("playBtn").style.display = "none";
 }
+
+
+const updateUserButton = document.getElementById('updateProfileButton');
+updateUserButton.addEventListener('click', () => {
+    // Redirect to the update profile page
+    window.location.href = '../updateUser.html' // Adjust the URL to your actual update profile page
+});

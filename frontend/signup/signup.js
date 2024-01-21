@@ -115,6 +115,8 @@ try {
 
     localStorage.setItem("token", data.token);
     localStorage.setItem("name", data.user.name);
+    localStorage.setItem("email", data.user.email);
+    localStorage.setItem("userID", data.user._id);
     location.href = "../dashboard/dashboard.html";
     }
 } catch (err) {

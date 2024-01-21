@@ -199,21 +199,18 @@ userRouter.get("/logout",async(req,res)=>{
     }
 })
 
-userRouter.patch("/update/:id", async (req, res) => {
-  const {id}= req.params;
-  const payload = req.body;
+userRouter.patch("/update/:userId", async (req, res) => {
+  const userId= req.params.userId;
+  const {name,email} = req.body;
 
   try {
     // const user = await UserModel.findById(userId);
 
-    if (payload._id == req.body._id) {
-      await noteModel.findByIdAndUpdate({ _id: id }, payload);
-      res.status(200).json({ msg: "note has been updated" });
-    }
-    else {
-      res.status(200).json({ msg: "You are not authorized to update this note" });
-    }
-  } catch (err) {
+    
+      await UserModel.findByIdAndUpdate(userId, {name,email});
+      res.status(200).json({ msg: "User has been updated" });
+    } 
+   catch (err) {
     res.status(400).json({ error: err });
   }
 }
