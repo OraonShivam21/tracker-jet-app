@@ -1,8 +1,34 @@
 // localStorage.setItem("name", "Shivam");
-// localStorage.setItem("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWE3ZGRmNWFjZjA1OTdlYjQzY2QxYTQiLCJ1c2VyIjoiU2hpdmFtIiwidXNlcm5hbWUiOiJTaGl2YW0iLCJpYXQiOjE3MDU4MzQzOTh9.puU1Zk97coWE5arBOr1IXJ5o-g4rDk2o_SUdgLYziCQ");
+// localStorage.setItem("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWE3ZGRmNWFjZjA1OTdlYjQzY2QxYTQiLCJ1c2VyIjoiU2hpdmFtIiwidXNlcm5hbWUiOiJTaGl2YW0iLCJpYXQiOjE3MDU4NDY2NTN9.SBvGfPx7WAaOfMow4ERwihBwUHf4mS-DVBuQGiIaELQ");
 
 window.addEventListener("load", (e) => {
   fetchFeedbackAndRender();
+});
+
+document.getElementById("feedback-btn").addEventListener("click", () => {
+  const title = document.getElementById("feedback-title").value;
+  const body = document.getElementById("feedback-body").value;
+  const rating = document.getElementById("feedback-rating").value;
+
+  fetch(`http://localhost:3000/feedback/add`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+    body: JSON.stringify({ title, body, rating }),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      fetchFeedbackAndRender();
+      document.getElementById("feedback-title").value = "";
+      document.getElementById("feedback-body").value = "";
+      document.getElementById("feedback-rating").value = "";
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 });
 
 const feedbackPerPage = 10;
@@ -11,7 +37,9 @@ let totalFeedback = 0;
 
 function fetchFeedbackAndRender() {
   console.log("fetch and show data");
-  fetch(`http://localhost:3000/feedback?page=${currentPage}&limit=${feedbackPerPage}`)
+  fetch(
+    `http://localhost:3000/feedback?page=${currentPage}&limit=${feedbackPerPage}`
+  )
     .then((res) => {
       totalFeedback = res.headers.get("X-Total-Count");
       return res.json();
