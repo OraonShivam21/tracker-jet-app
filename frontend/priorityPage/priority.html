@@ -1,118 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./priority.css">
+    <script src="./priority.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
 </head>
+
 <body>
-    <div class="containerPriority">
-        <div class="headerLevel">
-            <h1>Level Up. Go Premium.</h1>
-            <p>Save one hour every day. Guaranteed.</p>
-        </div>
-        <div class="includes">
-            <div class="features-payment">
-                <div class="features-sub">
-                    <!-- <h2>INCLUDES</h2> -->
-                    <div class="imgRucrring">
-                        <img src="./rucring.png" alt="">
+    <div class="mainContainer">
+        <div class="containerPriority">
+            <div class="headerLevel">
+                <h1>Level Up. Go Premium.</h1>
+                <p>Save one hour every day. Guaranteed.</p>
+            </div>
+            <div class="includes">
+                <div class="features-payment">
+                    <div class="features-sub">
+                        <!-- <h2>INCLUDES</h2> -->
+                        <div class="imgRucrring">
+                            <img src="./rucring.png" alt="">
+                        </div>
+                        <div class="recurring-task">
+                            Recurring Task
+                        </div>
                     </div>
-                    <div class="recurring-task">
-                        recurring<br>Task
+                    <div class="features-sub">
+                        <!-- <h2>INCLUDES</h2> -->
+                        <div class="imgRucrring">
+                            <img src="./custome.png" alt="">
+                        </div>
+                        <div class="recurring-task">
+                            Custom Themes
+                        </div>
                     </div>
+                    <div class="features-sub">
+                        <!-- <h2>INCLUDES</h2> -->
+                        <div class="imgRucrring">
+                            <img src="./whatsappIntegration.png" alt="">
+                        </div>
+                        <div class="recurring-task">
+                            WhatsApp Integration
+                        </div>
+                    </div>
+
+                    <div class="features-sub">
+                        <!-- <h2>INCLUDES</h2> -->
+                        <div class="imgRucrring">
+                            <img src="./colorTags.png" alt="">
+                        </div>
+                        <div class="recurring-task">
+                            Color Tags and labels
+                        </div>
+                    </div>
+                    <div class="features-sub">
+                        <!-- <h2>INCLUDES</h2> -->
+                        <div class="imgRucrring">
+                            <img src="./AIpowered.png" alt="">
+                        </div>
+                        <div class="recurring-task">
+                            AI-Powered Features
+                        </div>
+                    </div>
+                    <div class="features-sub">
+                        <!-- <h2>INCLUDES</h2> -->
+                        <div class="imgRucrring">
+                            <img src="./dailyPlanner.png" alt="">
+                        </div>
+                        <div class="recurring-task">
+                            Unlimited Planner
+                        </div>
+                    </div>
+
                 </div>
-                <div class="features-sub">
-                    <!-- <h2>INCLUDES</h2> -->
-                    <div class="imgRucrring">
-                        <img src="./custome.png" alt="">
-                    </div>
-                    <div class="recurring-task">
-                        Custom <br>Themes
-                    </div>
-                </div>
-                <div class="features-sub">
-                    <!-- <h2>INCLUDES</h2> -->
-                    <div class="imgRucrring">
-                        <img src="./whatsappIntegration.png" alt="">
-                    </div>
-                    <div class="recurring-task">
-                        WhatsApp<br>Integration
-                    </div>
+                <div>
+                    <fieldset class="payment-details3">
+                        <div class="payment-details" onclick="handleRadioClick(this)">
+                            <div class="radio-btn">
+                                <input type="radio" id="radio-btn" name="pricing" value="1 Month Plan">
+                            </div>
+
+                            <div class="price-section">
+                                <h2>1 month</h2>
+                                <p>$5.00/month</p>
+                            </div>
+                        </div>
+                        <div class="payment-details" onclick="handleRadioClick(this)">
+                            <div class="radio-btn">
+                                <input type="radio" id="radio-btn" name="pricing" value="12 Month Plan">
+                            </div>
+
+                            <div class="price-section">
+                                <h2>12 month</h2>
+                                <p>$3.00/mo<span savePercent>Save 50%</span></p>
+                            </div>
+
+
+                        </div>
+                        <div class="payment-details" onclick="handleRadioClick(this)">
+                            <div class="radio-btn">
+                                <input type="radio" id="radio-btn" name="pricing" value="6 Month Plan">
+                            </div>
+
+                            <div class="price-section">
+                                <h2>6 month</h2>
+                                <p>$4.00/mo<span id="savePercent">Save 25%</span></p>
+                            </div>
+
+
+                        </div>
+                    </fieldset>
+
                 </div>
 
-                <div class="features-sub">
-                    <!-- <h2>INCLUDES</h2> -->
-                    <div class="imgRucrring">
-                        <img src="./colorTags.png" alt="">
-                    </div>
-                    <div class="recurring-task">
-                        Color Tags<br>and labels
-                    </div>
-                </div>
-                <div class="features-sub">
-                    <!-- <h2>INCLUDES</h2> -->
-                    <div class="imgRucrring">
-                        <img src="./AIpowered.png" alt="">
-                    </div>
-                    <div class="recurring-task">
-                        AI-Powered<br>Features
-                    </div>
-                </div>
-                <div class="features-sub">
-                    <!-- <h2>INCLUDES</h2> -->
-                    <div class="imgRucrring">
-                        <img src="./dailyPlanner.png" alt="">
-                    </div>
-                    <div class="recurring-task">
-                        Unlimited<br>Planner
-                    </div>
-                </div>
 
             </div>
-            <div class="payment-details3">
-                <div class="payment-details">
-                    <div class="radio-btn">
-                        <input type="radio" id="radio-btn" name="pricing">
-                    </div>
-
-                    <div class="price-section">
-                        <!-- <i class="far fa-circle" ></i> -->
-                        <h2>1 month</h2>
-                        <p>$5.99/mo</p>
-                    </div>
 
 
+            <div class="checkout-payment">
+                <div class="ratingpoint">
+                    <img src="../assets/Star.svg" alt="Star" style="width:22px;height:22px">
+                    <img src="../assets/Star.svg" alt="Star" style="width:22px;height:22px">
+                    <img src="../assets/Star.svg" alt="Star" style="width:22px;height:22px">
+                    <img src="../assets/Star.svg" alt="Star" style="width:22px;height:22px">
+                    <img src="../assets/Star.svg" alt="Star" style="width:22px;height:22px">
+                    <h4 class="checkout-info">“StudyJet’s reminders jog my memory. It helped endlessly with keeping me
+                        on top of my tasks and
+                        has made me FAR more productive.”</h3>
                 </div>
-                <div class="payment-details">
-                    <div class="radio-btn">
-                        <input type="radio" id="radio-btn" name="pricing">
-                    </div>
 
-                    <div class="price-section">
-                        <!-- <i class="far fa-circle" ></i> -->
-                        <h2>12 month</h2>
-                        <p>$2.99/mo<span savePercent>Save 50%</span></p>
-                    </div>
+                <div class="choukout">
+                    <button id="continue" onclick="displayRadioValue()">Continue</button>
 
-
-                </div>
-                <div class="payment-details">
-                    <div class="radio-btn">
-                        <input type="radio" id="radio-btn" name="pricing">
-                    </div>
-
-                    <div class="price-section">
-                        <!-- <i class="far fa-circle" ></i> -->
-                        <h2>1 month</h2>
-                        <p>$4.49/mo<span id="savePercent">Save 25%</span></p>
-                    </div>
-
-
+                    <h4 id="noThanks">NO,THANKS</h4>
                 </div>
             </div>
+
+
         </div>
     </div>
 </body>
+
+<script>
+    var stripe = Stripe("pk_test_51OaAZqSJU9EFf2GWPAVpLoTuBxMryK48yAWoFL9xEbywdQUIC3iZhZeAT2yflHZFA4njNXTKgW00kEJGN8VZmV9A00CX7m7CNE");
+
+    function handleRadioClick(container) {
+        var radioButton = container.querySelector('input[type="radio"]');
+        radioButton.checked = true;
+
+        var allContainers = document.querySelectorAll('.payment-details');
+        allContainers.forEach(function (item) {
+            item.style.border = "none";
+        });
+
+        // Add border to the clicked container
+        container.style.border = "2px solid rgb(5, 102, 194)";
+        container.style.borderRadius = "15px";
+        
+    }
+
+    document.getElementById("continue").addEventListener("click", async () => {
+        var ele = document.getElementsByName('pricing');
+        var pricingData = [
+            {
+                plan: "1 Month Plan",
+                price: 5,
+                qnty: 1,
+            },
+            {
+                plan: "12 Month Plan",
+                price: 36,
+                qnty: 1,
+            }, {
+                plan: "6 Month Plan",
+                price: 24,
+                qnty: 1,
+            }
+        ];
+
+        var data;
+
+        for (i = 0; i < ele.length; i++) {
+            if (ele[i].checked) {
+                data = pricingData.filter((data) =>
+                    data.plan === ele[i].value
+                )
+            }
+        }
+
+        const body = {
+            product: data
+        }
+
+        const headers = {
+            "Content-Type": "application/json"
+        }
+
+        const response = await fetch("http://localhost:3000/payment", {
+            method: "POST",
+            headers: headers,
+            body: JSON.stringify(body)
+        })
+
+        const session = await response.json()
+
+        const result = stripe.redirectToCheckout({
+            sessionId: session.id
+        })
+
+        if (result.error) {
+            console.log(result.error)
+        }
+
+    });
+
+    document.getElementById("noThanks").addEventListener("click", () => {
+
+        window.location.href = "../dashboard/dashboard.html";
+    })
+
+    // document.getElementsByClassName("payment-details").addEventListener("click", () => {
+
+
+    // })
+</script>
+
 </html>
