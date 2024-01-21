@@ -1,12 +1,22 @@
+.mainContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2.5rem;
+
+}
+
 .containerPriority {
+    margin: auto;
     width: 60%;
     margin: 0 auto;
     padding: 20px;
     background-color: rgb(22, 22, 22);
-    color: #333; 
+    color: #333;
     font-family: Arial, sans-serif;
-    
-
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
 .headerLevel {
@@ -18,64 +28,75 @@
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 5px;
+    color: rgb(228, 228, 228);
 }
 
-.header p {
+.headerLevel p {
     font-size: 16px;
     line-height: 1.5;
+    color: rgb(142, 142, 146);
 }
 
 .payment-details3 {
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     border: 1px solid rgb(66, 66, 66);
-    border-radius: 45px;
-    height: 50vh;
-    width: 45%;
-
-
+    border-radius: 15px;
+    width: 30%;
+    padding: 10px;
 }
 
 .payment-details {
-    /* border: 1px solid red;  */
-    justify-content: space-evenly;
     display: flex;
     align-items: center;
-    padding-left: 10%;
-    height: 33%;
-
-
-
-
+    padding: 10px 10px;
+    width: 80%;
+    margin: 5px 0px;
+    height: 100%;
 }
 
-.payment-details:hover {
-
+/* .payment-details3 .payment-details:nth-child(2) {
     border: 3px solid rgb(5, 102, 194);
-    border-radius: 45px;
-    /* align-items: center; */
+    border-radius: 15px;
+} */
+
+.payment-details:hover {
+    border-radius: 15px;
+}
+
+.payment-details:hover h2 {
+    color: rgb(5, 102, 194);
 }
 
 .price-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 300px;
-    padding: 20px;
-    /* border: 1px solid #ddd; */
     border-radius: 5px;
 }
 
 .price-section h2 {
     font-size: 16px;
+    margin: 0;
     font-weight: bold;
-    margin-bottom: 5px;
+    color: gray;
 }
 
 .price-section p {
     font-size: 14px;
-    margin-bottom: 5px;
+    margin: 0;
+    color: gray;
 }
 
 .price-section span {
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 15px;
+    font-weight: 600;
+    color: red;
+    margin-left: 5px;
 }
 
 .testimonial {
@@ -94,41 +115,40 @@
 
 .features-payment {
     display: grid;
-    /* flex-direction: column; */
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
     justify-content: center;
     justify-content: space-around;
-    height: 50vh;
+    height: 40vh;
     width: 45%;
-    /* border: 1px solid red; */
     border: 1px solid rgb(66, 66, 66);
-    border-radius: 45px;
-    padding-left: 20px;
+    border-radius: 15px;
+    padding: 10px;
 }
 
-.features-sub {}
+.features-sub {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
 .imgRucrring img {
-    width: 40%;
     height: auto;
     border-radius: 50%;
-    /* Optional: for a circular image */
-    /* border: 1px solid red; */
 }
 
 .recurring-task {
-    /* margin-top: 20px; */
+    text-align: center;
     font-size: 15px;
+    font-weight: 400;
     color: rgb(214, 214, 214);
     padding-top: 3px;
 }
 
 .includes {
     display: flex;
-    /* width: ; */
-    justify-content: space-between;
-    /* border: 1px solid red; */
+    justify-content: space-evenly;
 
 }
 
@@ -140,13 +160,63 @@
 
 #radio-btn {
     transform: scale(1.5);
-    margin-right: 10px;
 
 }
 
-#radio-btn+label {
-    display: inline-block;
-    vertical-align: middle;
-    margin-left: 5px;
+#radio-btn:focus {
+    outline: none;
+}
 
+.ratingpoint {
+
+    margin-top: 10px;
+    align-items: center;
+    text-align: center;
+    width: 45%;
+    padding: 10px;
+
+}
+
+.checkout-payment {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 20px;
+}
+
+.choukout {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    width: 30%;
+    color: white;
+    padding: 10px;
+
+}
+
+.checkout-info {
+    margin-top: 10px;
+    color: #939393;
+}
+
+#continue {
+    width: 100%;
+    border: none;
+    border-radius: 45px;
+    font-size: 16px;
+    background-color: rgb(0, 131, 255);
+    color: white;
+    font-family: sans-serif;
+    font-weight: 500;
+    padding: 10px;
+    outline: none;
+}
+
+#continue:hover {
+    cursor: pointer;
+    background: rgb(0, 113, 219);
+    transition: cubic-bezier(0.19, 1, 0.22, 1);
 }
