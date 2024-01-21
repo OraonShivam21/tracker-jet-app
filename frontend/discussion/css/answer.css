@@ -69,6 +69,8 @@ button:hover {
 }
 /* hhhhhhhhhhhh */
 
+
+
 #question-container {
   background-color: rgb(238, 236, 236);
   font-family: 'Arial', sans-serif;
@@ -194,4 +196,31 @@ button:hover {
     margin-left: 5%;
   }
   
+}
+
+
+
+#typing-container {
+  max-width: 200px;
+  margin-left: 35%;
+}
+
+#typing-text {
+font-size: larger;
+  display: inline-block;
+  overflow: hidden;
+  border-right: 0.15em solid #333;
+  white-space: nowrap;
+  letter-spacing: 0.15em;
+  animation: typing 2.5s steps(40, end), blink-caret 1.0s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: #333; }
 }
