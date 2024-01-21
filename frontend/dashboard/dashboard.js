@@ -87,7 +87,7 @@ assignmentTask.addEventListener("keydown", (e) => {
 });
 
 function addMyDayNewTask(num) {
-  const taskAddURL = "http://localhost:3000/tasks/add";
+  const taskAddURL = "https://tracker-jet-api.onrender.com/tasks/add";
   let payload = {
     title: "",
     category: "",
@@ -136,7 +136,7 @@ const assignmentTasksContent = document.getElementById(
 );
 
 function fetchAndShowMyDayTask() {
-  const getTasksURL = `http://localhost:3000/tasks`;
+  const getTasksURL = `https://tracker-jet-api.onrender.com/tasks`;
 
   fetch(getTasksURL, {
     method: "GET",
@@ -162,7 +162,7 @@ function fetchAndShowMyDayTask() {
 }
 
 function fetchAndShowPersonalTask() {
-  const getTasksURL = `http://localhost:3000/tasks?category=personal`;
+  const getTasksURL = `https://tracker-jet-api.onrender.com/tasks?category=personal`;
 
   fetch(getTasksURL, {
     method: "GET",
@@ -184,7 +184,7 @@ function fetchAndShowPersonalTask() {
 }
 
 function fetchAndShowWorkTask() {
-  const getTasksURL = `http://localhost:3000/tasks?category=work`;
+  const getTasksURL = `https://tracker-jet-api.onrender.com/tasks?category=work`;
 
   fetch(getTasksURL, {
     method: "GET",
@@ -206,7 +206,7 @@ function fetchAndShowWorkTask() {
 }
 
 function fetchAndShowAssignmentTask() {
-  const getTasksURL = `http://localhost:3000/tasks?category=assignment`;
+  const getTasksURL = `https://tracker-jet-api.onrender.com/tasks?category=assignment`;
 
   fetch(getTasksURL, {
     method: "GET",
@@ -250,7 +250,7 @@ function renderMyDayTasks(tasks, num) {
     checkedTasks[i].addEventListener("click", (e) => {
       console.log(e.target.id);
       taskCards[i].classList.toggle("task-completed");
-      fetch(`http://localhost:3000/tasks/update/${e.target.id}`, {
+      fetch(`https://tracker-jet-api.onrender.com/tasks/update/${e.target.id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -355,7 +355,7 @@ logoutButton.addEventListener("click", (e) => {
   e.preventDefault();
   console.log(token);
 
-  fetch("http://localhost:3000/user/logout", {
+  fetch("https://tracker-jet-api.onrender.com/user/logout", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

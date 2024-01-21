@@ -12,7 +12,6 @@ const cors = require("cors");
 const { paymentRouter } = require("./routes/payment.route");
 const app = express();
 const port = process.env.PORT || 3000;
-const session = require("express-session")
 
 
 app.use(express.json());
