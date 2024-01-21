@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile Update</title>
+    <style>
+       body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background : linear-gradient(to right, rgb(255, 255, 255), rgb(236, 236, 204))
+            
+
+        }
+        img{
+            height: 40%;
+            width: 22%;
+        }
+        #updateForm {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+            width: 500px;
+            text-align: center;
+        }
+
+        #updateForm label {
+            display: block;
+            margin-bottom: 8px;
+            margin-right: 73%;
+            color: #2e2e2e;
+            font-weight: 600;
+
+            font-size: 19px;
+        }
+
+        #updateForm input {
+            width: 85%;
+            padding: 8px;
+            border-radius: 5px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        #updateForm button {
+            background-color: #0aa7b3;
+            color: white;
+            font-size: 16px;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        #updateForm button:hover {
+            background-color: #45a049;
+        }
+        #tasksCount{
+            padding: 5px 20px;
+            border: 1px solid rgb(62, 60, 60);
+            padding-right: 20px;
+            font-size: 17px;
+            width: 30%;
+            margin-left: 8%;
+            border-radius: 5%;
+            background: linear-gradient(to right, rgb(224, 224, 180), rgb(144, 176, 221));
+
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <h1>Your Details</h1> -->
+
+    <!-- <div id="userDetails">
+        <p>Name: <span id="userName"></span></p>
+        <p>Email: <span id="userEmail">john@example.com</span></p>
+        <button onclick="openUpdateForm()">Update Profile</button>
+    </div> -->
+    
+    <div id="updateForm">
+        <img src="https://img.freepik.com/premium-vector/man-avatar-profile-round-icon_24640-14044.jpg" alt="">
+        <h1>Update Profile</h1>
+        <!-- <h2>Update Profile</h2> -->
+        <!-- <h3>hello</h3> -->
+        <!-- <input type="text" id="updateName"> -->
+        <!-- <h1 id="updateName"></h1> -->
+        <label for="name">Name: </label>
+        <input type="text" id="updateName" required><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="updateEmail" required><br>
+
+        <button onclick="updateUserProfile()">Save Changes</button>
+        <h2 id="tasksCount"></h2>
+        <h2 id="updated"></h2>
+
+    </div>
+
+    <!-- <script>
+        // Mock user data
+        const user = {
+            _id: 'user123',
+            name: 'John Doe',
+            email: 'john@example.com',
+        };
+
+        // Function to open the update form
+        function openUpdateForm() {
+            document.getElementById('updateName').value = user.name;
+            document.getElementById('updateEmail').value = user.email;
+            document.getElementById('updateForm').style.display = 'block';
+            document.getElementById('userDetails').style.display = 'none';
+        }
+
+        // Function to update user profile
+        async function updateUserProfile() {
+            const updateName = document.getElementById('updateName').value;
+            const updateEmail = document.getElementById('updateEmail').value;
+
+            try {
+                const response = await fetch(`http://localhost:3000/user/update/${user._id}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ name: updateName, email: updateEmail }),
+                });
+
+                const data = await response.json();
+                alert(data.msg);
+
+                // Update the UI with new user details
+                document.getElementById('userName').textContent = updateName;
+                document.getElementById('userEmail').textContent = updateEmail;
+
+                // Close the update form
+                document.getElementById('updateForm').style.display = 'none';
+                document.getElementById('userDetails').style.display = 'block';
+            } catch (error) {
+                console.error('Error updating profile:', error);
+            }
+        }
+    </script> -->
+    <script src="./updateUser.js"></script>
+</body>
+</html>
