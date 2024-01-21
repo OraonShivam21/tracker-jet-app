@@ -207,7 +207,7 @@ body {
   padding: 0.8rem 0;
   height: 23rem;
   position: relative;
-  overflow-y: hidden;
+  overflow-y: scroll;
 }
 
 .no-tasks-circle {
