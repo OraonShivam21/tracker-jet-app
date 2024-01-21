@@ -19,7 +19,7 @@ header{
     z-index: 9;
 }
 .ggg::after{
-    background: #2980b9 none repeat scroll 0 0;
+    background: #050505 none repeat scroll 0 0;
     content: "";
     height: 141px;
     left: -5%;
