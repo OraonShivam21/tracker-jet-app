@@ -10,6 +10,11 @@ const feedbackSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    rating: {
+      type: Number,
+      enum: [1, 2, 3, 4, 5],
+      default: 4,
+    },
     userID: {
       type: String,
       required: true,
