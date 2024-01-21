@@ -30,7 +30,7 @@ const form = document.getElementById("signupForm");
     })
     const registerUser=()=>{
     
-    fetch("http://localhost:3000/user/register",{
+    fetch("https://tracker-jet-api.onrender.com/user/register",{
         method:"POST",
         headers:{
             "Content-type":"application/json"
@@ -57,7 +57,7 @@ form2.addEventListener("submit", async(e) => {
 
 
 const verifyUser = () => {
-     fetch("http://localhost:3000/user/verifyOTP", {
+     fetch("https://tracker-jet-api.onrender.com/user/verifyOTP", {
             method: "POST",
             headers: {
                 "Content-type": "application/json",
@@ -80,27 +80,7 @@ const verifyUser = () => {
         })
     }
 
-//         if (!response.ok) {
-//            window.alert("not verified")
-//         }
 
-//         const data = await response.json();
-//         console.log(data);
-
-//         // Check if OTP verification was successful before showing an alert
-//         if (data.success) {
-//             alert("OTP verified successfully");
-//             // Optionally, you can perform additional actions here if needed
-//         } else {
-//             alert("OTP verified failed");
-//             // Optionally, you can show a different alert or handle the failure in another way
-//         }
-//     } catch (error) {
-//         console.error("Error during OTP verification:", error);
-//         throw error; // Re-throw the error to be caught by the outer try-catch block
-//     }
-// };
-// Loginnn
 const loginForm = document.getElementById("loginForm");
 loginForm.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -113,7 +93,7 @@ e.preventDefault();
 //     document.getElementById("msgDisplayTag").innerText = "Empty Field !"
 // }else{
 try {
-    const response = await fetch("http://localhost:3000/user/login", {
+    const response = await fetch("https://tracker-jet-api.onrender.com/user/login", {
         method: "POST",
         headers: {
             "Content-type": "application/json",

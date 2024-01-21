@@ -10,7 +10,7 @@ document.getElementById("feedback-btn").addEventListener("click", () => {
   const body = document.getElementById("feedback-body").value;
   const rating = document.getElementById("feedback-rating").value;
 
-  fetch(`http://localhost:3000/feedback/add`, {
+  fetch(`https://tracker-jet-api.onrender.com/feedback/add`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -38,7 +38,7 @@ let totalFeedback = 0;
 function fetchFeedbackAndRender() {
   console.log("fetch and show data");
   fetch(
-    `http://localhost:3000/feedback?page=${currentPage}&limit=${feedbackPerPage}`
+    `https://tracker-jet-api.onrender.com/feedback?page=${currentPage}&limit=${feedbackPerPage}`
   )
     .then((res) => {
       totalFeedback = res.headers.get("X-Total-Count");

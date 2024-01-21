@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
   let currentPage = 1;
 
   function fetchAndDisplayQuotes(page) {
-    fetch(`http://localhost:3000/quote/?page=${page}&limit=${quotesPerPage}`)
+    fetch(`https://tracker-jet-api.onrender.com/quote/?page=${page}&limit=${quotesPerPage}`)
       .then(response => response.json())
       .then(data => {
         const quotes = data.quotes;
