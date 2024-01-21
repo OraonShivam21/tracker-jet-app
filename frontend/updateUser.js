@@ -33,7 +33,7 @@ async function updateUserProfile() {
     const updateEmail = document.getElementById('updateEmail').value;
 
     try {
-        const response = await fetch(`http://localhost:3000/user/update/${userID}`, {
+        const response = await fetch(`https://tracker-jet-api.onrender.com/user/update/${userID}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
