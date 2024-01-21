@@ -6,7 +6,7 @@ const feedbackRoute = express.Router();
 
 feedbackRoute.get("/", async (req, res) => {
   const page = req.query.page || 1;
-  const limit = 10;
+  const limit = req.query.limit || 10;
   const skip = page * limit - limit;
   try {
     const feedbacks = await FeedbackModel.find().sort({ updatedAt: -1 }).skip(skip).limit(limit);
