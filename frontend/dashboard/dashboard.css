@@ -5,7 +5,7 @@ body {
   /* margin: 0px; */
   /* padding: 0;  */
   /* border: 1px solid red; */
-  /* background-image: url("../assets/blank-blue-halftone-background_53876-114466.avif"); */
+  background-image: url("../assets/blank-blue-halftone-background_53876-114466.avif");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -243,6 +243,18 @@ body {
 .my-day-add-tasks {
   position: absolute;
   bottom: 2rem;
+}
+.timerBtn{
+  font-size: 10px;
+  color: #fff;
+  font-weight: 600;
+  /* padding: 8px 20px; */
+  margin-right: 5px;
+  width: 20%;
+  border-radius: 10px;
+  background-color: rgb(236, 66, 66);
+  margin-bottom: 5%;
+
 }
 
 #add-my-day-task-btn,

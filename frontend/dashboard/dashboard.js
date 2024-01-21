@@ -289,6 +289,10 @@ function createMyDayTaskCard(task) {
   taskCardHeading.setAttribute("class", "task-card-heading");
   taskCardHeading.innerText = "My-Task";
 
+  const timerBtn = document.createElement("button");
+  timerBtn.setAttribute("class","timerBtn");
+  timerBtn.innerText="Start Timer"
+
   const spanMaterial = document.createElement("span");
   spanMaterial.setAttribute("class", "material-symbols-outlined");
   spanMaterial.innerText = " chevron_right ";
@@ -299,14 +303,16 @@ function createMyDayTaskCard(task) {
   taskCardHeading.appendChild(spanCategory);
 
   label.appendChild(taskCardHeading);
+  
 
   const h5Title = document.createElement("h5");
   h5Title.setAttribute("class", "title");
   h5Title.innerText = task.title;
   label.appendChild(h5Title);
+  // label.appendChild(timerBtn)
 
   taskCard.appendChild(label);
-
+  taskCard.appendChild(timerBtn)
   return taskCard;
 }
 
