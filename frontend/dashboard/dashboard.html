@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sidebar UI</title>
+    <title>Dashboard</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -39,17 +39,7 @@
         <!-- <i class="far fa-sun"></i> -->
         <i class="fas fa-bullseye"></i>
         <span id="myDay" class="menu-text">My day</span>
-        <span class="badge">3</span>
-      </div>
-      <div
-        class="menu-item"
-        onclick="menuItemClicked(this, 'next-seven-days-section')"
-      >
-        <i class="far fa-calendar-alt"></i>
-        <!-- <i class="fa-regular fa-calendar-lines"></i> -->
-
-        <span id="next7Days" class="menu-text">Next 7 days</span>
-        <span class="badge">4</span>
+        <span class="badge" id="my-day-badge">0</span>
       </div>
       <div
         class="menu-item"
@@ -57,16 +47,16 @@
       >
         <i class="far fa-calendar-alt"></i>
         <span id="AllMyTask" class="menu-text">All my tasks</span>
-        <span class="badge">4</span>
+        <span class="badge" id="all-tasks-badge">0</span>
       </div>
       <div
         class="menu-item"
-        onclick="menuItemClicked(this, 'my-calender-section')"
+        
       >
         <i class="far fa-calendar-alt"></i>
 
-        <span id="calendar" class="menu-text">My Calendar</span>
-        <span class="badge">4</span>
+        <span id="calendar" class="menu-text"><a href="../calender.html" style="text-decoration: none;color: rgb(162, 162, 162);">My Calendar</a></span>
+        <span class="badge" id="calender-badge">0</span>
       </div>
 
       <div class="menu-item-title">
@@ -80,7 +70,7 @@
       >
         <!-- <i class="far fa-circle"></i>  -->
         <span id="personal" class="menu-text">Personal</span>
-        <span class="badge">1</span>
+        <span class="badge" id="personal-badge">0</span>
       </div>
       <div
         class="menu-item"
@@ -88,22 +78,26 @@
       >
         <!-- <i class="far fa-circle"></i> -->
         <span id="work" class="menu-text">Work</span>
-        <span class="badge">2</span>
+        <span class="badge" id="work-badge">0</span>
       </div>
       <div
         class="menu-item"
-        onclick="menuItemClicked(this, 'shopping-list-section')"
+        onclick="menuItemClicked(this, 'assignment-list-section')"
       >
         <!-- <i class="far fa-circle"></i> -->
-        <span id="shopping" class="menu-text">Shopping</span>
-        <span class="badge">3</span>
+        <span id="shopping" class="menu-text">Assignment</span>
+        <span class="badge" id="assignment-badge">0</span>
       </div>
-
+      <div class="menu-item" onclick="menuItemClicked(this, 'discussionForum')">
+        <i class="material-symbols-outlined"> group </i>
+        <span id="discussionForum" class="menu-text">Discussion</span>
+      </div>
       <div class="menu-item-title">
         <span class="section-title">Tags</span>
         <span class="addList" id="tags">+</span>
       </div>
-      <div class="menu-item priority">#Priority</div>
+      <a href="../priorityPage/priority.html"><div class="menu-item priority">#Priority</div></a>
+      
       <button class="logoutBtn add-space-btn" id="logoutBTN">
         <i class="fa-solid fa-power-off"></i>Logout
       </button>
@@ -117,11 +111,45 @@
           <div class="my-day-tasks-heading-greeting">
             <h1>
               <span id="greeting">Good Evening</span>,
-              <span id="heading-username">Vikas</span>.
+              <span id="heading-username"></span>
             </h1>
             <h2>You can make magic happen</h2>
           </div>
           <div class="my-day-tasks-heading-logos">
+            <!-- <span class="material-symbols-outlined"> sync </span>
+            <span class="material-symbols-outlined"> headset_mic </span>
+            <span class="material-symbols-outlined">
+              check_box_outline_blank
+            </span>
+            <span class="material-symbols-outlined"> search </span> -->
+            <a href="../board/board.html" style="padding: 20px 35px;"><button style="border-radius: 10px; background-color: #f8f5f5; color: black; font-size: 16px;">Do Some creative</button></a>
+            
+          </div>
+        </div>
+        <div id="my-day-tasks-content">
+          <!-- show all tasks here -->
+          <div class="no-tasks-circle"></div>
+        </div>
+        <div class="my-day-add-tasks">
+          <button id="add-my-day-task-btn">
+            +
+            <input
+              type="text"
+              name="addMyDayTasks"
+              id="addMyDayTask"
+              placeholder="Add task"
+            />
+          </button>
+        </div>
+      </div>
+      <div class="dashboard-content-nav" id="all-my-tasks-section">
+        <div class="all-my-tasks-heading">
+          <div class="all-my-tasks-heading-left">
+            <span class="material-symbols-outlined"> article </span>
+            <h5>All my tasks</h5>
+            <span class="material-symbols-outlined"> more_horiz </span>
+          </div>
+          <div class="all-my-tasks-heading-right">
             <span class="material-symbols-outlined"> sync </span>
             <span class="material-symbols-outlined"> headset_mic </span>
             <span class="material-symbols-outlined">
@@ -130,33 +158,123 @@
             <span class="material-symbols-outlined"> search </span>
           </div>
         </div>
-        <div id="my-day-tasks-content">
-            <!-- show all tasks here -->
-            <div class="task-card">
-                <h4 class="title">My First task</h4>
-                <p class="body">This is my very first task</p>
-            </div>
+        <div id="all-my-tasks-content">
+          <!-- show all tasks here -->
+          <div class="no-tasks-circle-other"></div>
+        </div>
+        <div class="my-day-add-tasks">
+          <button id="add-all-my-task-btn">
+            +
+            <input
+              type="text"
+              name="addMyDayTasks"
+              id="addAllMyTask"
+              placeholder="Add task"
+            />
+          </button>
         </div>
       </div>
-      <div class="dashboard-content-nav" id="next-seven-days-section">
-        Next seven days section
-      </div>
-      <div class="dashboard-content-nav" id="all-my-tasks-section">
-        all my tasks section
-      </div>
       <div class="dashboard-content-nav" id="my-calender-section">
-        my-calender-section
+        <!-- calender section here -->
       </div>
       <div class="dashboard-content-nav" id="personal-list-section">
-        personal-list-section
+        <div class="all-my-tasks-heading">
+          <div class="all-my-tasks-heading-left">
+            <span class="material-symbols-outlined"> article </span>
+            <h5>Personal</h5>
+            <span class="material-symbols-outlined"> more_horiz </span>
+          </div>
+          <div class="all-my-tasks-heading-right">
+            <span class="material-symbols-outlined"> sync </span>
+            <span class="material-symbols-outlined"> headset_mic </span>
+            <span class="material-symbols-outlined">
+              check_box_outline_blank
+            </span>
+            <span class="material-symbols-outlined"> search </span>
+          </div>
+        </div>
+        <div id="personal-tasks-content">
+          <!-- show all tasks here -->
+          <div class="no-tasks-circle-other"></div>
+        </div>
+        <div class="my-day-add-tasks">
+          <button id="personal-task-btn">
+            +
+            <input
+              type="text"
+              name="personalTasks"
+              id="personalTask"
+              placeholder="Add task"
+            />
+          </button>
+        </div>
       </div>
       <div class="dashboard-content-nav" id="work-list-section">
-        work-list-section
+        <div class="all-my-tasks-heading">
+          <div class="all-my-tasks-heading-left">
+            <span class="material-symbols-outlined"> article </span>
+            <h5>Work</h5>
+            <span class="material-symbols-outlined"> more_horiz </span>
+          </div>
+          <div class="all-my-tasks-heading-right">
+            <span class="material-symbols-outlined"> sync </span>
+            <span class="material-symbols-outlined"> headset_mic </span>
+            <span class="material-symbols-outlined">
+              check_box_outline_blank
+            </span>
+            <span class="material-symbols-outlined"> search </span>
+          </div>
+        </div>
+        <div id="work-tasks-content">
+          <!-- show all tasks here -->
+          <div class="no-tasks-circle-other"></div>
+        </div>
+        <div class="my-day-add-tasks">
+          <button id="work-task-btn">
+            +
+            <input
+              type="text"
+              name="workTasks"
+              id="workTask"
+              placeholder="Add task"
+            />
+          </button>
+        </div>
       </div>
-      <div class="dashboard-content-nav" id="shopping-list-section">
-        shopping-list-section
+      <div class="dashboard-content-nav" id="assignment-list-section">
+        <div class="all-my-tasks-heading">
+          <div class="all-my-tasks-heading-left">
+            <span class="material-symbols-outlined"> article </span>
+            <h5>Assignment</h5>
+            <span class="material-symbols-outlined"> more_horiz </span>
+          </div>
+          <div class="all-my-tasks-heading-right">
+            <span class="material-symbols-outlined"> sync </span>
+            <span class="material-symbols-outlined"> headset_mic </span>
+            <span class="material-symbols-outlined">
+              check_box_outline_blank
+            </span>
+            <span class="material-symbols-outlined"> search </span>
+          </div>
+        </div>
+        <div id="assignment-tasks-content">
+          <!-- show all tasks here -->
+          <div class="no-tasks-circle-other"></div>
+        </div>
+        <div class="my-day-add-tasks">
+          <button id="assignment-task-btn">
+            +
+            <input
+              type="text"
+              name="assignmentTask"
+              id="assignmentTask"
+              placeholder="Add task"
+            />
+          </button>
+        </div>
       </div>
     </div>
+    
     <script
       src="https://kit.fontawesome.com/82eb4b47e3.js"
       crossorigin="anonymous"

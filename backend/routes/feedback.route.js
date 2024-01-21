@@ -1,14 +1,19 @@
 const express = require("express");
-const FeedbackModel = require("../models/FeedbackModel");
+const {FeedbackModel} = require("../models/feedback.model");
 const { auth } = require("../middlewares/auth.middleware");
 
 const feedbackRoute = express.Router();
 
 feedbackRoute.get("/", async (req, res) => {
+
   try {
+    console.log("Hello")
     const feedbacks = await FeedbackModel.find();
-    if (feedbacks.length === 0) throw "No feedbacks found";
-    res.statu(200).json({ feedbacks });
+    if (feedbacks.length === 0) {
+      res.json({msg:"No feedback found"})
+      console.log("No feedback")
+    };
+    res.status(200).json({ feedbacks });
   } catch (error) {
     res.status(400).json({ error });
   }

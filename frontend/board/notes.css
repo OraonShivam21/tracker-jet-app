@@ -1,0 +1,85 @@
+body {
+    background: linear-gradient(to right, #f1f0db, #74d3e0);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar {
+    background-color: #0d0e0e;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+}
+
+.container {
+    margin-top: 30px;
+}
+
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 20px; /* Adjusted for a smoother appearance */
+    padding: 15px; /* Added padding for better spacing */
+    margin-bottom: 20px; /* Improved spacing between cards */
+}
+
+.head {
+    color: #171718;
+    font-size: 1.8rem;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.noteCard {
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 15px; /* Adjusted for a smoother appearance */
+    padding: 15px; /* Added padding for better spacing */
+    margin-bottom: 15px; /* Improved spacing between cards */
+}
+
+.noteCard p {
+    color: #495057;
+}
+
+.noteCard .btn-primary {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.noteCard .btn-primary:hover {
+    background-color: #c82333;
+    border-color: #c82333;
+}
+
+.form-control {
+    border: 1px solid #ced4da;
+}
+
+@media (max-width: 576px) {
+    .container {
+        margin-top: 15px;
+    }
+    
+    .card,
+    .noteCard {
+        border-radius: 10px; /* Adjusted for a smoother appearance on small screens */
+    }
+
+    .head {
+        font-size: 1rem;
+    }
+    .btn{
+        width: 100%;
+    }
+}

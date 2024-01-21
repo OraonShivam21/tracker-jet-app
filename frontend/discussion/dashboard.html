@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/question.css" />
+  </head>
+  <body>
+   
+    <!-- loading -->
+    <div id="loader" class="loader"></div>
+   <h1 class="head2">Let's Talk: Engage, Share, Discuss! 💬</h1>
+   
+    <!-- search -->
+   <div id="nav">
+    <input type="text" id="search-bar" placeholder="search..">
+   <div style="margin-right: 36%; display: flex; gap: 15px;">
+    <a href="../dashboard/dashboard.html">
+      <img src="./css/home2.png" alt="Home" id="home-logo" />
+    </a>
+
+    <a href="#" onclick="mine()">
+      <img src="./css/user.png" alt="your questions" id="mine">
+  </a>
+    <a href="#" onclick="openModal()">
+      <img src="./css/ask.png" alt="ask question" id="ask">
+  </a>
+   </div>
+   </div>
+  
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+  
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div id="container">
+          <input id="title" type="text" placeholder="title">
+          <textarea id="body" placeholder="body" rows="10" cols="20"></textarea>
+          <select id="tags">
+            <option value="dsa">dsa</option>
+            <option value="Java">Java</option>
+            <option value="JavaScript">JavaScript</option>
+            <option value="Node">Node</option>
+            <option value="CSS">CSS</option>
+            <option value="HTML">HTML</option>
+          </select>
+          <button onclick="create()" id="create">Create</button>
+        </div>
+      </div>
+</div>
+<!-- <div><img src="https://img.freepik.com/free-vector/group-therapy-illustration-concept_52683-45727.jpg" alt=""></div> -->
+
+    <div id="parent">
+    
+    </div>
+   
+    <div id="pagination"></div>
+   
+
+  </body>
+  <script>
+let url='http://localhost:3000'
+
+
+// pop-up
+function openModal() {
+  document.getElementById('myModal').style.display = 'block';
+}
+
+
+function closeModal() {
+  document.getElementById('myModal').style.display = 'none';
+}
+
+//create questions
+function create() {
+  fetch(`${url}/questions/create`, {
+        method: "POST",
+        headers: {
+            'Content-type': 'application/json',
+            authorization: `Bearer ${localStorage.getItem('token')}`
+        },
+        body: JSON.stringify({
+            title: document.getElementById('title').value,
+            body: document.getElementById('body').value,
+            tags: document.getElementById('tags').value
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        console.log(data);
+        location.href='./dashboard.html'
+    })
+    .catch(err => console.log(err));
+  closeModal();
+}
+
+
+    const parent = document.getElementById("parent");
+
+    //view your own questions only
+    const mine = () => {
+      parent.innerHTML = "";
+      fetch(`${url}/questions/mine`, {
+        headers: {
+          "Content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          print(data);
+        })
+        .catch((err) => console.log(err));
+    };
+
+    //print all data
+    const print = (Alldata) => {
+      Alldata.forEach((data) => {
+        const card = createCard(data);
+        parent.append(card);
+      });
+    };
+
+    //delete the question
+    const deletequestion = (id) => {
+      fetch(
+        `${url}/questions/delete/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.msg === "you are not authorised") {
+            alert("you are not allowed to delete");
+          } else {
+            alert("question has been deleted");
+            location.href = "./dashboard.html";
+          }
+          console.log(data);
+        })
+        .catch((error) => console.error(error));
+    };
+
+
+    //create card
+    const createCard = (data) => {
+      let card = document.createElement("div");
+      card.id = "card";
+      let title = document.createElement("h4");
+      title.id = "title";
+      let body = document.createElement("div");
+      let username = document.createElement("div");
+      let date = document.createElement("div");
+      let deletebtn = document.createElement("button");
+      let parent1 = document.createElement("div");
+      let btn = document.createElement("div");
+      deletebtn.innerHTML = "delete";
+      deletebtn.addEventListener("click", () => {
+        deletequestion(data._id);
+      });
+      let viewanswer = document.createElement("button");
+      viewanswer.innerHTML = "view answer";
+      viewanswer.addEventListener("click", () => {
+        window.location.href = `./viewanswers.html?questionid=${data._id}`;
+      });
+      body.id = "body";
+      parent1.id = "username";
+      parent1.append(username, date);
+      btn.id = "btn";
+      btn.append(deletebtn, viewanswer);
+
+      const tags = document.createElement("div");
+      tags.id = "category";
+
+      const categoryText = document.createElement("span");
+      categoryText.textContent = "category- ";
+      categoryText.style.opacity = "0.8";
+
+      const tagsText = document.createElement("span");
+      tagsText.textContent = data.tags;
+      tagsText.style.fontWeight = "bold";
+
+      tags.appendChild(categoryText);
+      tags.appendChild(tagsText);
+
+      title.textContent = `Q. ${data.title}`;
+      body.textContent = data.body;
+      username.textContent = `by- ${data.username}`;
+      date.textContent = `date- ${data.createdAt.slice(0, 10)}`;
+      card.append(title, parent1, body, tags, btn);
+      return card;
+    };
+
+    //search
+  let searchbar=document.getElementById('search-bar')
+let timer
+searchbar.addEventListener('input', () => {
+  clearTimeout(timer);
+  timer = setTimeout(() => {
+    parent.innerHTML=""
+    const payload = searchbar.value;
+    getData(`${url}/questions?search=${payload}`);
+  }, 1000);
+});
+
+//pagination
+
+let paginationwrapper=document.getElementById('pagination')
+const pagination=(total)=>{
+  let btnNum=Math.ceil(total/5);
+  for(let i=0;i<btnNum;i++)
+  {
+    let paginationbtn=document.createElement('button')
+    paginationbtn.textContent=i+1;
+    paginationwrapper.append(paginationbtn)
+    paginationbtn.addEventListener('click',()=>{
+      getData(`${url}/questions?page=${i}`)
+    })
+  }
+}
+
+
+//getdata
+    const getData = (url) => {
+      const loader = document.getElementById('loader');
+      loader.style.display = 'block';
+      fetch(`${url}`, {
+        headers: {
+          "Content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+        .then((res) => {
+          return res.json()
+        })
+        .then((data) => {
+          loader.style.display = 'none';
+          console.log(data);
+          paginationwrapper.innerHTML=""
+          parent.innerHTML=""
+          pagination(data.totalQuestions)
+          print(data.question);
+        })
+        .catch((err) => console.log(err));
+    };
+    getData(`${url}/questions`);
+  </script>
+</html>
