@@ -244,6 +244,18 @@ body {
   position: absolute;
   bottom: 2rem;
 }
+.timerBtn{
+  font-size: 10px;
+  color: #fff;
+  font-weight: 600;
+  /* padding: 8px 20px; */
+  margin-right: 5px;
+  width: 20%;
+  border-radius: 10px;
+  background-color: rgb(236, 66, 66);
+  margin-bottom: 5%;
+
+}
 
 #add-my-day-task-btn,
 #add-all-my-task-btn,
