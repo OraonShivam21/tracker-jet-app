@@ -43,7 +43,11 @@
   </head>
   <body>
     <span class="backp"><a href="./dashboard.html" >&larr; Back</a></span>
-    <h1 class="head1">Insightful Responses🌠</h1>
+    <!-- <h1 class="head1">Insightful Responses🌠</h1> -->
+    <div id="typing-container">
+      <h4 id="typing-text">Answer The Question!</h4>
+  </div>
+
    <div id="question-container">
    
     <h4 id="question-title" style="margin-top: 0;"></h4>
@@ -62,6 +66,21 @@
   </body>
   <script>
     let url='http://localhost:3000'
+    function changeText(newText) {
+            const typingText = document.getElementById('typing-text');
+            typingText.textContent = newText;
+
+            typingText.style.animation = 'none';
+            void typingText.offsetWidth;
+            typingText.style.animation = null;
+        }
+        setTimeout(() => {
+            changeText('Help Your Mate!');
+        }, 4000);
+
+
+
+
 // pop up
 
     function openModal() {

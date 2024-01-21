@@ -8,6 +8,13 @@
   </head>
   <body>
    
+    <!-- text animation -->
+    
+  <div id="typing-container">
+    <h4 id="typing-text">Ask your question!</h4>
+</div>
+
+
     <!-- loading -->
     <div id="loader" class="loader"></div>
    <h1 class="head2">Let's Talk: Engage, Share, Discuss! 💬</h1>
@@ -62,6 +69,19 @@
   </body>
   <script>
 let url='http://localhost:3000'
+
+//text animation
+function changeText(newText) {
+            const typingText = document.getElementById('typing-text');
+            typingText.textContent = newText;
+
+            typingText.style.animation = 'none';
+            void typingText.offsetWidth;
+            typingText.style.animation = null;
+        }
+        setTimeout(() => {
+            changeText('Resolve Your Doubt!');
+        }, 4000);
 
 
 // pop-up
