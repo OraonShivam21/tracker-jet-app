@@ -26,7 +26,7 @@ window.addEventListener("load", (e) => {
   if (username) {
     sidebarUsername.innerText = username;
     sidebarUsername.style.textTransform = "capitalize";
-    headingUsername.innerText = username;
+    headingUsername.innerText = `${username}😊`;
     headingUsername.style.textTransform = "capitalize";
   }
 
