@@ -26,7 +26,12 @@
   </head>
 
   <body>
+    <div class="toggleee" style="display: none;">
+    <button class="sidebar-toggle" onclick="toggleSidebar()">
+      <i class="fas fa-bars"></i>
+    </button></div>
     <div class="sidebar">
+     
       <div id="profile">
         <!-- <div><i class="fa-solid fa-user"></i>  </div> -->
         <div class="profile-name">
@@ -126,6 +131,8 @@
             
           </div>
         </div>
+
+        
         <div id="my-day-tasks-content">
           <!-- show all tasks here -->
           <div class="no-tasks-circle"></div>
@@ -174,6 +181,7 @@
           </button>
         </div>
       </div>
+      
       <div class="dashboard-content-nav" id="my-calender-section">
         <!-- calender section here -->
       </div>
@@ -275,10 +283,21 @@
       </div>
     </div>
     
+<!-- hhhhhhhhhhhhhhhhhhhhhhhhh -->
+    <div id="timesUpPopup" class="popup">
+      <div id="timesUpContent">
+        <img src="https://media.tenor.com/r7vS2yotO1sAAAAi/time-waiting.gif" alt="Times Up Clock" class="iamge" style="backdrop-filter: none; height: 20%;
+        width: 20%;"/>
+        <p>Times Up!</p>
+        <button id="resetBtn">Reset</button>
+      </div>
+    </div>
+       <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  -->
     <script
       src="https://kit.fontawesome.com/82eb4b47e3.js"
       crossorigin="anonymous"
     ></script>
   </body>
+  <script src="https://kit.fontawesome.com/82eb4b47e3.js" crossorigin="anonymous"></script>
   <script src="./dashboard.js"></script>
 </html>
