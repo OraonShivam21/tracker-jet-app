@@ -59,8 +59,8 @@ function createFeedbackCard(feedback) {
   content.appendChild(title);
 
   const body = document.createElement("p");
-  title.setAttribute("class", "feedback-card-body");
-  title.innerText = feedback.body;
+  body.setAttribute("class", "feedback-card-body");
+  body.innerText = feedback.body;
   content.appendChild(body);
 
   const rating = document.createElement("div");
