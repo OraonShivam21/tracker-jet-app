@@ -40,7 +40,7 @@ The Tracker Jet website used these tech stacks as mentioned below for its creati
 - **MongoDB:** For database construction.
 - **Nodemailer:** To generate mail OTP
 
-  **End Points:**
+  **API End Points:**
   - /user/register - for signing up
   - /user/login - for logging in
   - /user/verifyOTP - for user verification
