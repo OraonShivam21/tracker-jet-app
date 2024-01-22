@@ -14,9 +14,9 @@ window.addEventListener("load", (e) => {
 
   if (timeNow >= 6 && timeNow < 12) {
     greeting.innerText = "Good Morning";
-  } else if (timeNow >= 12 && timeNow < 16) {
+  } else if (timeNow >= 12 && timeNow < 17) {
     greeting.innerText = "Good Afternoon";
-  } else if (timeNow >= 16 && timeNow < 20) {
+  } else if (timeNow >= 17 && timeNow < 20) {
     greeting.innerText = "Good Evening";
   } else {
     greeting.innerText = "Good Night";
