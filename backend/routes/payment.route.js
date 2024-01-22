@@ -29,7 +29,7 @@ paymentRouter.post('/', async (req, res) => {
     const session = await stripe.checkout.sessions.create({
       line_items: lineItems,
       mode: 'payment',
-      success_url: "https://www.google.com",
+      success_url: "https://tracker-jet-app.vercel.app/dashboard/dashboard.html",
       cancel_url: "https://www.yahoo.com",
     });
 
