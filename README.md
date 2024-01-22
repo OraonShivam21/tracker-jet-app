@@ -21,7 +21,7 @@ The project was developed collaboratively by the following team members:
 - **Vikas Yadav** - fw27_137
 
 ## Live Demo
-Get the live demo of our deployed website through the link: [Traker Jet App](https://tracker-jet-app.vercel.app/)
+Get the live demo of our deployed website through the link: [Tracker Jet App](https://tracker-jet-app.vercel.app/)
 
 ## Tech Stack
 The Tracker Jet website used these tech stacks as mentioned below for its creation:
@@ -29,14 +29,36 @@ The Tracker Jet website used these tech stacks as mentioned below for its creati
 
 - **HTML5:** The website's structure and overall content foundation.
 - **CSS3:** For styling and making the website visually appealing.
+- **Bootstrap** For page responsiveness.
 - **JavaScript:** For incorporating functionalities like fetching, searching, sorting, pagination, etc.
 - **Vercel:** The website is deployed and hosted on Vercel, making it accessible online.
 
 **Backend:**
 
 - **Node.js:** The core module for server building.
-- **Express.js** The external module which helped in server building.
-- ****
+- **Express.js:** The external module which helped in server building.
+- **MongoDB:** For database construction.
+- **Nodemailer:** To generate mail OTP
+
+  **End Points:**
+  - /user/register - for signing up
+  - /user/login - for logging in
+  - /user/verifyOTP - for user verification
+  - /user/update/:ID - for updating user details 
+  - /tasks - to get all tasks of the user
+  - /tasks/add - to add new tasks
+  - /tasks/update/:taskID - to update the status of the task
+  - /questions - to get all the questions
+  - /questions/mind - to get user-specific questions
+  - /questions/delete/:id - to delete the questions
+  - /questions/create - to create and post questions
+  - /answers/:questionID - to get an answer to a particular question
+  - /answers/create/:questionID - to post answers to a particular question
+  - /answers/delete/:answerID - to delete answers
+  - /answers/upvote/:answerID - to upvote the answer
+  - /answers/downvote/:answerID - to downvote the answer
+  - /feedback - to get all the feedback
+  - /feedback/add - to create new feedback
 
 ## Website Preview
 Here are some preview images of the website pages:
